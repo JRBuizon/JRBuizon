@@ -12,7 +12,7 @@ const CoolAnimation = () => {
         setTimeout(function () { setAnimationDone(true); }, 1400);
     }, [])
     return (
-        <div className="text-xl flex flex-col items-center relative h-[90vh] text-[64px] w-full">
+        <div className="flex flex-col items-center relative h-[90vh] text-[64px] w-full">
             <span className={clsx(`font-bold font-josefin absolute top-[0%] left-[-6%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[800ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
             <span className={clsx(`font-bold font-josefin absolute top-[0%] left-[10%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[700ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
             <span className={clsx(`font-bold font-josefin absolute top-[0%] left-[26%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[600ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
@@ -52,9 +52,9 @@ const CoolAnimation = () => {
             <span className={clsx(`font-bold font-josefin absolute top-[40%] left-[75%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[300ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
             <span className={clsx(`font-bold font-josefin absolute top-[40%] left-[91.5%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[400ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
 
-            <span className={clsx(`font-bold font-josefin absolute top-[50%] duration-500 transition-all ease-in-out text-white z-[2]`, (animationStart && !animationEnd) && "top-[38%] text-[88px] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]", (animationEnd && !animationDone) && "duration-[700ms] top-[40%] text-[64px] drop-shadow-none text-black", animationDone && "delay-[100ms] top-[40%] text-white drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
+            <span className={clsx(`font-bold font-josefin absolute top-[50%] duration-500 transition-all ease-in-out text-white z-[2]`, (animationStart && !animationEnd) && "translate-y-[-0.9em] text-[88px] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]", (animationEnd && !animationDone) && "duration-[700ms] translate-y-[-1em] text-[64px] drop-shadow-none text-[#000]", animationDone && "translate-y-[-1em] delay-[100ms] top-[40%] text-white drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
             <span className={clsx(`font-bold font-josefin absolute top-[50%] duration-500 transition-all ease-in-out z-[3]`, (animationStart && !animationEnd) && "text-[88px]", animationEnd && "duration-[700ms] text-[64px]")}>yyyabiii</span>
-            <span className={clsx(`font-bold font-josefin absolute top-[50%] duration-500 transition-all ease-in-out text-white z-[2]`, (animationStart && !animationEnd) && "top-[62%] text-[88px] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]", (animationEnd && !animationDone) && "duration-[700ms] top-[60%] text-[64px] drop-shadow-none text-black", animationDone && "delay-[100ms] top-[60%] text-white drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
+            <span className={clsx(`font-bold font-josefin absolute top-[50%] duration-500 transition-all ease-in-out text-white z-[2]`, (animationStart && !animationEnd) && "top-[62%] text-[88px] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]", (animationEnd && !animationDone) && "duration-[700ms] top-[60%] text-[64px] drop-shadow-none text-[#000]", animationDone && "delay-[100ms] top-[60%] text-white drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
 
             <span className={clsx(`font-bold font-josefin absolute top-[50%] left-[-6%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[300ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
             <span className={clsx(`font-bold font-josefin absolute top-[50%] left-[10%] duration-500 transition-all ease-in-out text-white`, animationDone && "delay-[200ms] drop-shadow-[0_0px_0.5px_rgba(0,0,0,1)]")}>yyyabiii</span>
@@ -97,3 +97,5 @@ const CoolAnimation = () => {
         </div>
     )
 }
+
+export default CoolAnimation;
