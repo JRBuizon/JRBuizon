@@ -114,7 +114,7 @@
 
   .horizontal-scroll
   {
-    animation: horizontal 2s linear infinite;
+    animation: horizontal 1.5s linear infinite;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);
   }
@@ -124,3 +124,9 @@
       transform: translateX(-50vw);
     }
   }
+body {
+  cursor: url('../public/mouse.svg'), auto;
+}
+.cursor-yapointer {
+  cursor: url('../public/pointer.svg'), auto;
+}
