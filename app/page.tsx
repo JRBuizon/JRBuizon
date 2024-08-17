@@ -25,7 +25,6 @@ const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
 
 export default function Landing() {
   const [textExpanded, setTextExpanded] = useState(false);
-  const [trailExpanded, setTrailExpanded] = useState(false);
   const [carryingRed, setCarryingRed] = useState(false);
   const [carryingBlue, setCarryingBlue] = useState(false);
   const [carryingYellow, setCarryingYellow] = useState(false);
@@ -33,14 +32,14 @@ export default function Landing() {
   const [coolText, setCoolText] = useState("awesome");
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+
   const [hoverText, setHoverText] = useState("scratch fortune");
+
   const redRef = useRef<HTMLSpanElement>(null)
   const blueRef = useRef<HTMLSpanElement>(null)
   const greenRef = useRef<HTMLSpanElement>(null)
   const yellowRef = useRef<HTMLSpanElement>(null)
   const mouseTextRef = useRef<HTMLSpanElement>(null)
-  const ASCIIContainerDivRef = useRef<HTMLDivElement>(null)
-  // const mouseTrailRef = useRef<HTMLSpanElement>(null)
 
   function shuffleCoolText() {
     const words = ["wow so cool", "✨ awesome ✨", "how'd he do that?", "lit 🔥", "fire 🔥", "✨ amazing ✨", "siiick"];
@@ -51,19 +50,10 @@ export default function Landing() {
   function handleMouseMove(e: MouseEvent) {
     setMouseX(e.clientX)
     setMouseY(e.clientY)
-    // set the element's new position:
     if (mouseTextRef.current) {
       mouseTextRef.current.style.top = ((e.clientY - mouseTextRef.current.offsetHeight) + window.scrollY) + "px";
       mouseTextRef.current.style.left = (e.clientX - (mouseTextRef.current.offsetWidth / 2)) + "px";
     }
-
-    // setTimeout(function () {
-    //   if (mouseTrailRef.current) {
-
-    //     mouseTrailRef.current.style.top = ((e.clientY - (mouseTrailRef.current.offsetHeight / 2) + 6) + window.scrollY) + "px";
-    //     mouseTrailRef.current.style.left = (e.clientX - (mouseTrailRef.current.offsetWidth / 2) + 6) + "px";
-    //   }
-    // }, 50);
 
     if (carryingRed && redRef.current) {
       redRef.current.style.top = ((e.clientY - (redRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
@@ -91,7 +81,8 @@ export default function Landing() {
       setCarryingGreen(false)
     }
   }
-
+  document.onmousemove = handleMouseMove;
+  document.onmouseup = handleMouseUp;
 
   function randomFortune() {
     const fortunes = ['🔖大吉', '🔖吉', '🔖大吉', '🔖半吉', '🔖末吉', '🔖末小吉', '🔖凶'];
@@ -99,30 +90,21 @@ export default function Landing() {
     setHoverText(fortunes[fortuneIndex])
   }
 
-  useEffect(() => {
-    document.onmousemove = handleMouseMove;
-    document.onmouseup = handleMouseUp;
-  }, [])
 
   return (
     <div className="flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute text-xs", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
-      {/* <span ref={mouseTrailRef} style={{ 'pointerEvents': 'none', 'mixBlendMode': 'difference', }} className={clsx("rounded-full z-[1] origin-center absolute bg-white p-6")} /> */}
 
-      <div draggable="false" className="flex flex-row w-full">
+      <div className="flex flex-row w-full">
         <span ref={redRef} onMouseDown={() => setCarryingRed(true)} onMouseUp={() => setCarryingRed(false)} id="red" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yared p-2 top-[63%] left-[5%]" />
         <span ref={blueRef} onMouseDown={() => setCarryingBlue(true)} onMouseUp={() => setCarryingBlue(false)} id="blue" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yablue p-2 top-[63%] left-[8%]" />
         <span ref={yellowRef} onMouseDown={() => setCarryingYellow(true)} onMouseUp={() => setCarryingYellow(false)} id="yellow" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yayellow p-2 top-[63%] left-[11%]" />
         <span ref={greenRef} onMouseDown={() => setCarryingGreen(true)} onMouseUp={() => setCarryingGreen(false)} id="green" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yagreen p-2 top-[63%] left-[14%]" />
-        <div draggable="false" className="noselect bg-black w-[50%] flex flex-col items-start px-[5%] justify-center h-[100vh] tracking-widest text-white text-[48px]">
-          <span draggable="false" onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
-          <span draggable="false" onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
+        <div className="z-[0] noselect bg-black w-[50%] flex flex-col items-start px-[5%] justify-center h-[100vh] tracking-widest text-white text-[48px]">
+          <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
+          <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
         </div>
-        <div ref={ASCIIContainerDivRef} onMouseEnter={() => { setTrailExpanded(true); }} onMouseLeave={() => {
-          setTrailExpanded(false);
-
-        }} className={clsx("relative gap-y-0 overflow-clip relative w-[50%] h-[100vh] text-lg flex flex-col items-start justify-start text-justify py-0 my-0 leading-none", cutive.className)}>
-          <div id='bubble' className="absolute" />
+        <div className={clsx("relative gap-y-0 overflow-clip relative w-[50%] h-[100vh] text-lg flex flex-col items-start justify-start text-justify py-0 my-0 leading-none", cutive.className)}>
         </div>
       </div>
 
