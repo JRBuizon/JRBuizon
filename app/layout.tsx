@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Alata } from "next/font/google";
 import "./globals.css";
 
-const urba = Urbanist({ subsets: ["latin"] });
+const alata = Alata({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "yabuizon",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urba.className}>{children}</body>
+      <body className={alata.className}>{children}</body>
     </html>
   );
 }
