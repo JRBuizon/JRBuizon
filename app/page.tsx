@@ -2,7 +2,7 @@
 
 import TypeWriterAnimation from "@/components/typewriterAnimation";
 import clsx from "clsx";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import headerImage from "@/public/images/header_image_temp.png"
 import Link from "next/link";
@@ -18,21 +18,28 @@ import GreenText from "@/components/greenText";
 import LinkCard from "@/components/linkCard";
 import HorizontalScroll from "@/components/horizontalScroll";
 import RedText from "@/components/redText";
+import { Cutive_Mono } from "next/font/google"
 
 const rethink = Rethink_Sans({ subsets: ['latin'] })
+const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
 
 export default function Landing() {
   const [textExpanded, setTextExpanded] = useState(false);
+  const [trailExpanded, setTrailExpanded] = useState(false);
   const [carryingRed, setCarryingRed] = useState(false);
   const [carryingBlue, setCarryingBlue] = useState(false);
   const [carryingYellow, setCarryingYellow] = useState(false);
   const [carryingGreen, setCarryingGreen] = useState(false);
-  const [coolText, setCoolText] = useState("awesome")
+  const [coolText, setCoolText] = useState("awesome");
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
+  const [hoverText, setHoverText] = useState("scratch fortune");
   const redRef = useRef<HTMLSpanElement>(null)
   const blueRef = useRef<HTMLSpanElement>(null)
   const greenRef = useRef<HTMLSpanElement>(null)
   const yellowRef = useRef<HTMLSpanElement>(null)
   const mouseTextRef = useRef<HTMLSpanElement>(null)
+  const ASCIIContainerDivRef = useRef<HTMLDivElement>(null)
   // const mouseTrailRef = useRef<HTMLSpanElement>(null)
 
   function shuffleCoolText() {
@@ -40,7 +47,10 @@ export default function Landing() {
     const wordIndex = Math.floor(Math.random() * words.length)
     return words[wordIndex]
   }
+
   function handleMouseMove(e: MouseEvent) {
+    setMouseX(e.clientX)
+    setMouseY(e.clientY)
     // set the element's new position:
     if (mouseTextRef.current) {
       mouseTextRef.current.style.top = ((e.clientY - mouseTextRef.current.offsetHeight) + window.scrollY) + "px";
@@ -54,7 +64,6 @@ export default function Landing() {
     //     mouseTrailRef.current.style.left = (e.clientX - (mouseTrailRef.current.offsetWidth / 2) + 6) + "px";
     //   }
     // }, 50);
-
 
     if (carryingRed && redRef.current) {
       redRef.current.style.top = ((e.clientY - (redRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
@@ -82,13 +91,23 @@ export default function Landing() {
       setCarryingGreen(false)
     }
   }
-  document.onmousemove = handleMouseMove;
-  document.onmouseup = handleMouseUp;
+
+
+  function randomFortune() {
+    const fortunes = ['🔖大吉', '🔖吉', '🔖大吉', '🔖半吉', '🔖末吉', '🔖末小吉', '🔖凶'];
+    const fortuneIndex = Math.floor(Math.random() * fortunes.length)
+    setHoverText(fortunes[fortuneIndex])
+  }
+
+  useEffect(() => {
+    document.onmousemove = handleMouseMove;
+    document.onmouseup = handleMouseUp;
+  }, [])
 
   return (
     <div className="flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute text-xs", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
-      {/* <span ref={mouseTrailRef} style={{ 'pointerEvents': 'none', 'mixBlendMode': 'difference', }} className={clsx("rounded-full z-[9] origin-center absolute bg-white p-6")} /> */}
+      {/* <span ref={mouseTrailRef} style={{ 'pointerEvents': 'none', 'mixBlendMode': 'difference', }} className={clsx("rounded-full z-[1] origin-center absolute bg-white p-6")} /> */}
 
       <div draggable="false" className="flex flex-row w-full">
         <span ref={redRef} onMouseDown={() => setCarryingRed(true)} onMouseUp={() => setCarryingRed(false)} id="red" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yared p-2 top-[63%] left-[5%]" />
@@ -99,9 +118,11 @@ export default function Landing() {
           <span draggable="false" onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
           <span draggable="false" onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
         </div>
-        <div className="relative w-[50%] h-[100vh] flex flex-row justify-start bg-white items-center">
-          <Image width={"300"} src={headerImage} alt="header image" />
-          <span>i&apos;m still building this part</span>
+        <div ref={ASCIIContainerDivRef} onMouseEnter={() => { setTrailExpanded(true); }} onMouseLeave={() => {
+          setTrailExpanded(false);
+
+        }} className={clsx("relative gap-y-0 overflow-clip relative w-[50%] h-[100vh] text-lg flex flex-col items-start justify-start text-justify py-0 my-0 leading-none", cutive.className)}>
+          <div id='bubble' className="absolute" />
         </div>
       </div>
 
