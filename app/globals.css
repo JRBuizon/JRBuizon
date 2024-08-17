@@ -110,3 +110,17 @@
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
   }
+
+
+  .horizontal-scroll
+  {
+    animation: horizontal 2s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  @keyframes horizontal {
+    to {
+      transform: translateX(-50vw);
+    }
+  }
