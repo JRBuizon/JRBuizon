@@ -5,7 +5,7 @@ import "./globals.css";
 const alata = Alata({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "yabuizon",
+  title: "Jeremiah Ryan Buizon",
   description: "Jeremiah Ryan Buizon's personal website",
 };
 

@@ -109,7 +109,7 @@ export default function Landing() {
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
         </div>
-        <div className={clsx("relative w-[50%] h-[100vh] text-lg grid grid-cols-3 grid-rows-3", cutive.className)}>
+        <div className={clsx("pointer-events-none noselect relative w-[50%] h-[100vh] text-lg grid grid-cols-3 grid-rows-3", cutive.className)}>
           <div className="w-full relative">
             <Image src={incu} unoptimized fill objectFit="cover" alt='incu' />
           </div>
