@@ -20,8 +20,6 @@ import HorizontalScroll from "@/components/horizontalScroll";
 import RedText from "@/components/redText";
 import { Cutive_Mono } from "next/font/google"
 import eco from '@/public/images/eco.gif'
-import incu from '@/public/images/incu.gif'
-import takbo from '@/public/images/takbo.gif'
 import takboCover from '@/public/images/takbo-cover.png'
 import YellowText from "@/components/yellowText";
 import ExperienceGained from "@/components/experienceGained";
@@ -117,7 +115,7 @@ export default function Landing() {
       {/* WORKS SECTION */}
       <HorizontalScroll backwards>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <div className="gap-y-12 flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
+      <div className="gap-y-12 flex flex-col items-start w-full px-[10%] pt-[3%] pb-[5%]">
         <div className="flex flex-col items-start w-full">
           {/* KINHUB SECTION */}
           <span className="text-yawhite pb-4">working at <Link target="_blank" className="cursor-yapointer text-yablue outline-none" href="https://kinhub.com">kinhub</Link> <span className="text-xs">(2023<span className="text-sm"> - present</span>)</span></span>
@@ -223,7 +221,7 @@ export default function Landing() {
       <HorizontalScroll backwards>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
       <HorizontalScroll>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
 
-      <div className="gap-y-12 flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
+      <div className="gap-y-12 flex flex-col items-start w-full px-[10%] pt-[3%] pb-[5%]">
 
         <div className="grid grid-cols-3 gap-x-[32px] w-full">
           <ContentCard color="yellow" imageSource={takboCover} title="Takbo.io" link="https://stells.design/takbo">
