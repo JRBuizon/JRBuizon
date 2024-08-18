@@ -84,8 +84,11 @@ export default function Landing() {
       setCarryingGreen(false)
     }
   }
-  document.onmousemove = handleMouseMove;
-  document.onmouseup = handleMouseUp;
+  useEffect(() => {
+    document.onmousemove = handleMouseMove;
+    document.onmouseup = handleMouseUp;
+
+  }, [])
 
   function randomFortune() {
     const fortunes = ['🔖大吉', '🔖吉', '🔖大吉', '🔖半吉', '🔖末吉', '🔖末小吉', '🔖凶'];
