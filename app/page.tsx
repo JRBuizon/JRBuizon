@@ -82,11 +82,11 @@ export default function Landing() {
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} ><span className="">hi.</span> i&apos;m ryan.</span>
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
 
-          <div className="text-[0px] flex flex-row gap-x-8 pt-4">
-            <span className="bg-yared p-2" />
-            <span className="bg-yablue p-2" />
-            <span className="bg-yayellow p-2" />
-            <span className="bg-yagreen p-2" />
+          <div className="text-[32px] leading-none flex font-bold flex-row gap-x-8 pt-4">
+            <span className="text-yared">#</span>
+            <span className="text-yablue">#</span>
+            <span className="text-yagreen">#</span>
+            <span className="text-yayellow">#</span>
           </div>
           <div onMouseEnter={() => {
             setCoolText(shuffleAboutMeText());
@@ -114,7 +114,7 @@ export default function Landing() {
 
       {/* WORKS SECTION */}
       <HorizontalScroll backwards>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
+      <HorizontalScroll className="text-yared">work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <div className="gap-y-12 flex flex-col items-start w-full px-[10%] pt-[3%] pb-[5%]">
         <div className="flex flex-col items-start w-full">
           {/* KINHUB SECTION */}
@@ -218,8 +218,8 @@ export default function Landing() {
       </div >
 
       {/* CONTACT SECTION */}
-      <HorizontalScroll backwards>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
-      <HorizontalScroll>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
+      <HorizontalScroll className="text-yagreen" backwards>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
+      <HorizontalScroll className="text-yablue">cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
 
       <div className="gap-y-12 flex flex-col items-start w-full px-[10%] pt-[3%] pb-[5%]">
 
