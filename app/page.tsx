@@ -87,7 +87,6 @@ export default function Landing() {
   useEffect(() => {
     document.onmousemove = handleMouseMove;
     document.onmouseup = handleMouseUp;
-
   }, [])
 
   function randomFortune() {
