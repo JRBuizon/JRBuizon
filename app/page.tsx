@@ -19,6 +19,9 @@ import LinkCard from "@/components/linkCard";
 import HorizontalScroll from "@/components/horizontalScroll";
 import RedText from "@/components/redText";
 import { Cutive_Mono } from "next/font/google"
+import eco from '@/public/images/eco.gif'
+import incu from '@/public/images/incu.gif'
+import takbo from '@/public/images/takbo.gif'
 
 const rethink = Rethink_Sans({ subsets: ['latin'] })
 const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
@@ -104,8 +107,26 @@ export default function Landing() {
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
         </div>
-        <div className={clsx("relative w-[50%] h-[100vh] text-lg flex flex-col", cutive.className)}>
-
+        <div className={clsx("relative w-[50%] h-[100vh] text-lg grid grid-cols-3 grid-rows-3", cutive.className)}>
+          <div className="w-full relative">
+            <Image src={incu} unoptimized fill objectFit="cover" alt='incu' />
+          </div>
+          <div className="w-full relative">
+            <Image src={takbo} unoptimized fill objectFit="cover" alt='takbo' />
+          </div>
+          <div className="w-full relative">
+            <Image src={flower} unoptimized fill objectFit="cover" alt='flower' />
+          </div>
+          <div className="w-full relative">
+            <Image src={eco} unoptimized fill objectFit="cover" alt='eco' />
+          </div>
+          <div className="w-full relative flex items-center justify-center">these</div>
+          <div className="w-full relative flex items-center justify-center">are</div>
+          <div className="w-full relative flex items-center justify-center">still</div>
+          <div className="w-full relative flex items-center justify-center">empty</div>
+          <div className="w-full relative scale-x-[-100%]">
+            <Image src={headerImage} unoptimized width={256} objectFit="cover" alt='eco' />
+          </div>
         </div>
       </div>
 
