@@ -4,7 +4,7 @@ import { ReactNode, useEffect } from "react";
 export default function HorizontalScroll({ children, backwards = false, className }: { children: ReactNode | string, backwards?: boolean, className?: string }) {
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            document.body.style.setProperty('--scroll', (window.pageYOffset / (document.body.offsetHeight - window.innerHeight)).toString());
+            document.body.style.setProperty('--scroll', (window.scrollY / (document.body.offsetHeight - window.innerHeight)).toString());
         }, false);
     }, [])
     return (

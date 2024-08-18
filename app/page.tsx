@@ -41,6 +41,11 @@ export default function Landing() {
     const wordIndex = Math.floor(Math.random() * words.length)
     return words[wordIndex]
   }
+  function shuffleAboutMeText() {
+    const words = ["yep, that's me", "sup", "about me", "about me", "about me", "about me", "about the programmer", "me stuff", "about me", "about the programmer"];
+    const wordIndex = Math.floor(Math.random() * words.length)
+    return words[wordIndex]
+  }
 
   function handleMouseMove(e: MouseEvent) {
     setMouseX(e.clientX)
@@ -68,46 +73,46 @@ export default function Landing() {
 
   return (
     <div className="relative overflow-x-clip flex flex-col w-full items-center">
-      <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute text-xs", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
+      <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
 
-      <div className="flex flex-row w-full">
-        <div className="z-[0] noselect bg-black w-[50%] flex flex-col items-start px-[5%] justify-center h-[100vh] tracking-widest text-white text-[48px]">
-          <span onMouseOver={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} ><span className="">hi.</span> i&apos;m ryan.</span>
-          <span onMouseOver={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
+      <div className="relative overflow-hidden flex bg-black flex-col w-full">
+        <div className="z-[2] bg-opacity-[90%] noselect bg-black w-[100%] flex flex-col items-start px-[10%] justify-center h-[100vh] tracking-widest text-white text-[64px]">
+          <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} ><span className="">hi.</span> i&apos;m ryan.</span>
+          <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
 
           <div className="text-[0px] flex flex-row gap-x-8 pt-4">
-            <span className="z-[1] bg-yared p-2" />
-            <span className="z-[1] bg-yablue p-2" />
-            <span className="z-[1] bg-yayellow p-2" />
-            <span className="z-[1] bg-yagreen p-2" />
+            <span className="bg-yared p-2" />
+            <span className="bg-yablue p-2" />
+            <span className="bg-yayellow p-2" />
+            <span className="bg-yagreen p-2" />
           </div>
+          <div onMouseEnter={() => {
+            setCoolText(shuffleAboutMeText());
+            setTextExpanded(true);
+          }}
+            onMouseLeave={
+              () => {
+                setTextExpanded(false);
+              }
+            }
+            className=" hover:scale-x-[-102%] hover:scale-y-[102%] transition-all duration-300 ease-out w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
+            <Link href='/about' className="cursor-yapointer">
+              <Image src={headerImage} unoptimized width={400} objectFit="cover" alt='eco' />
+
+            </Link>
+
+          </div>
+
         </div>
-        <div className={clsx("pointer-events-none noselect relative w-[50%] h-[100vh] text-lg grid grid-cols-3 grid-rows-3", cutive.className)}>
-
-          <div className="w-full relative">
-            <Image src={takbo} unoptimized fill objectFit="cover" alt='takbo' />
-          </div>
-          <div className="w-full relative">
-            <Image src={eco} unoptimized fill objectFit="cover" alt='eco' />
-          </div>
-          <div className="w-full relative flex items-center justify-center">these</div>
-
-          <div className="w-full relative">
-            <Image src={flower} unoptimized fill objectFit="cover" alt='flower' />
-          </div>
-          <div className="w-full relative">
-            <Image src={incu} unoptimized fill objectFit="cover" alt='incu' />
-          </div>
-          <div className="w-full relative flex items-center justify-center">are</div>
-          <div className="w-full relative flex items-center justify-center">still</div>
-          <div className="w-full relative flex items-center justify-center">empty</div>
-          <div className="w-full relative scale-x-[-100%]">
-            <Image src={headerImage} unoptimized width={256} objectFit="cover" alt='eco' />
+        <div className="flex absolute top-0 w-ful">
+          <div className="relative w-[100vw] h-[100vh]">
+            <Image src={eco} unoptimized fill objectFit="cover" objectPosition="top" alt='eco' />
           </div>
         </div>
       </div>
 
       {/* WORKS SECTION */}
+      <HorizontalScroll backwards>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <div className="z-[4] gap-y-12 bg-black flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
 
