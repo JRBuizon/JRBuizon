@@ -2,9 +2,9 @@
 const nextConfig = {
     basePath: "/JRBuizon",
     output: "export",
-};
-module.exports = {
-    distDir: 'out',
+    images: {
+        unoptimized: true,
+    }
 };
 
 export default nextConfig;
