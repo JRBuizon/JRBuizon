@@ -97,7 +97,7 @@ export default function Landing() {
                 setTextExpanded(false);
               }
             }
-            className=" hover:rotate-[5deg] hover:right-[-30%]  w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
+            className=" hover:scale-x-[-102%] hover:scale-y-[102%] transition-all duration-300 ease-out  w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
             <Link href='/about' className="cursor-yapointer">
               <Image src={headerImage} unoptimized width={400} objectFit="cover" alt='me' />
             </Link>
@@ -232,10 +232,13 @@ export default function Landing() {
           </ContentCard>
         </div>
       </div>
-
-      {/* LABS SECTION */}
-      <HorizontalScroll>css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox</HorizontalScroll>
-
+      {/* <div className="px-[10%] pt-[1%] bg-yawhite h-[11vh] w-full">
+          <div className="flex flex-row gap-x-4">
+            <span className="text-[24px] text-black font-bold tracking-widest">where i&apos;m @</span>
+            <Link href="https://www.instagram.com/jeremiahbuizon/" className="text-[24px] text-black tracking-widest hover:opacity-[50%] cursor-yapointer transition-all duration-300 ease-out delay-50">instagram</Link>
+            <Link href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className="text-[24px] text-black tracking-widest hover:opacity-[50%] cursor-yapointer transition-all duration-300 ease-out delay-50">linkedin</Link>
+          </div>
+        </div> */}
     </div >
   );
 }

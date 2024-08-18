@@ -65,6 +65,7 @@ export default function AboutPage() {
 
     return (
         <div className="noselect min-h-[100vh] text-yawhite relative bg-black overflow-clip flex flex-col w-full items-center">
+            {/* BACKGROUND TEXT */}
             <div className="absolute text-[#222] flex flex-col">
                 <span>{`<div id='drag-bounds' className="min-h-[100vh] relative flex flex-row w-full pl-[10%] gap-x-[48px]">`}</span>
                 <span className="pl-[24px]">{`<div className=" flex flex-col w-[65%] pt-[8%] pr-[32px]">`}</span>
@@ -73,16 +74,18 @@ export default function AboutPage() {
                 <span className="pl-[48px]">{`<span className="font-josefin tracking-widest text-[56px]">about me</span>`}</span>
                 <span className="pl-[48px]">{`<span className={clsx(rethink.className, "text-base")}>`}</span>
                 <span className="pl-[72px]">{`hi! i&apos;m ryan, a <RedText>filipino</RedText> developer currently taking <YellowText>BS Computer Science</YellowText> at the <RedText><Link href="https://upd.edu.ph/" className="cursor-yapointer">University of the Philippines Diliman</Link></RedText>.`}</span>
-                <span className="pl-[72px]">{`i have <GreenText>2+ years of experience</GreenText> building apps, websites, and games. i&apos;ve worked with startups and businesses based in the <BlueText>UK</BlueText>, <BlueText>spain</BlueText>, <BlueText>singapore</BlueText>, and (of course) <BlueText>✨metro manila✨</BlueText>.`}</span>
+                <span className="pl-[72px]">{`i have <GreenText>2+ years of experience</GreenText> building apps, websites, and games. i&apos;ve worked with startups and businesses based in the <BlueText>UK</BlueText>, <BlueText>spain</BlueText>, <BlueText>singapore</BlueText>, and (of course) <BlueText>#metro manila#</BlueText>.`}</span>
                 <span className="pl-[72px]">{`<br />`}</span>
                 <span className="pl-[72px]">{` <br />`}</span>
                 <span className="pl-[72px]">{` my interests vary from <GreenText>game dev</GreenText> to <BlueText>data analysis</BlueText>, but i have a special place in my heart for anything <YellowText>visual</YellowText> (ui, frontend, data viz).`}</span>
                 <span className="pl-[72px]">{`<br />`}</span>
                 <span className="pl-[48px]">{`</span>`}</span>
             </div>
+
+
             <div id='drag-bounds' className="min-h-[100vh] relative flex flex-row w-full pl-[10%] gap-x-[48px]">
                 <div className=" flex flex-col w-[65%] pt-[8%] pr-[32px]">
-                    <Link href="/" className="absolute top-[7%] left-[10%] cursor-yapointer">&lt;- back</Link>
+                    <Link id='btn-back' href="/" className="absolute top-[7%] left-[10%] cursor-yapointer"><span className="absolute left-[-1.5em] opacity-0">&lt;-</span><span className="absolute left-[-3em] opacity-0">&lt;-</span><span className="absolute left-[-4.5em] opacity-0">&lt;-</span><span className="absolute left-[-7.5em] opacity-0">home</span>back</Link>
 
                     <span className="font-josefin tracking-widest text-[56px]">about me</span>
                     <span className={clsx(rethink.className, "text-base")}>

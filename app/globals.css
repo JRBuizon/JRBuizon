@@ -154,3 +154,36 @@ span{
 #start-point:hover span {
   rotate: -15deg
 }
+
+#btn-back span:nth-child(1) {
+  transition-property: all;
+  transition-duration: 0;
+  transition-delay: 0.05s;
+}
+#btn-back:hover span:nth-child(1) {
+  opacity: 100%
+}
+#btn-back span:nth-child(2) {
+  transition-property: all;
+  transition-duration: 0;
+  transition-delay: 0.1s;
+}
+#btn-back:hover span:nth-child(2) {
+  opacity: 100%
+}
+#btn-back span:nth-child(3) {
+  transition-property: all;
+  transition-duration: 0;
+  transition-delay: 0.15s;
+}
+#btn-back:hover span:nth-child(3) {
+  opacity: 100%
+}
+#btn-back span:nth-child(4) {
+  transition-property: all;
+  transition-duration: 0;
+  transition-delay: 0.25s;
+}
+#btn-back:hover span:nth-child(4) {
+  opacity: 100%
+}
