@@ -92,25 +92,27 @@ export default function Landing() {
 
 
   return (
-    <div className="flex flex-col w-full items-center">
+    <div className="relative overflow-x-clip flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute text-xs", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
 
-      <div className="flex flex-row w-full">
-        <span ref={redRef} onMouseDown={() => setCarryingRed(true)} onMouseUp={() => setCarryingRed(false)} id="red" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yared p-2 top-[63%] left-[5%]" />
-        <span ref={blueRef} onMouseDown={() => setCarryingBlue(true)} onMouseUp={() => setCarryingBlue(false)} id="blue" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yablue p-2 top-[63%] left-[8%]" />
-        <span ref={yellowRef} onMouseDown={() => setCarryingYellow(true)} onMouseUp={() => setCarryingYellow(false)} id="yellow" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yayellow p-2 top-[63%] left-[11%]" />
-        <span ref={greenRef} onMouseDown={() => setCarryingGreen(true)} onMouseUp={() => setCarryingGreen(false)} id="green" style={{ 'position': 'absolute' }} className="z-[9] cursor-yapointer origin-center absolute bg-yagreen p-2 top-[63%] left-[14%]" />
+      <div className="fixed h-[100vh] flex flex-row w-full">
+        <span ref={redRef} onMouseDown={() => setCarryingRed(true)} onMouseUp={() => setCarryingRed(false)} id="red" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yared p-2 top-[63%] left-[5%]" />
+        <span ref={blueRef} onMouseDown={() => setCarryingBlue(true)} onMouseUp={() => setCarryingBlue(false)} id="blue" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yablue p-2 top-[63%] left-[8%]" />
+        <span ref={yellowRef} onMouseDown={() => setCarryingYellow(true)} onMouseUp={() => setCarryingYellow(false)} id="yellow" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yayellow p-2 top-[63%] left-[11%]" />
+        <span ref={greenRef} onMouseDown={() => setCarryingGreen(true)} onMouseUp={() => setCarryingGreen(false)} id="green" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yagreen p-2 top-[63%] left-[14%]" />
         <div className="z-[0] noselect bg-black w-[50%] flex flex-col items-start px-[5%] justify-center h-[100vh] tracking-widest text-white text-[48px]">
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
           <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
         </div>
-        <div className={clsx("relative gap-y-0 overflow-clip relative w-[50%] h-[100vh] text-lg flex flex-col items-start justify-start text-justify py-0 my-0 leading-none", cutive.className)}>
+        <div className={clsx("relative w-[50%] h-[100vh] text-lg flex flex-col", cutive.className)}>
+
         </div>
       </div>
 
       {/* WORKS SECTION */}
+      <div className="mt-[100vh]" />
       <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <div className="gap-y-12 bg-black flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
+      <div className="z-[4] gap-y-12 bg-black flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
 
         <div className="flex flex-col items-start w-full">
           {/* KINHUB SECTION */}
@@ -159,7 +161,7 @@ export default function Landing() {
                   <br />
                   <BlueText className="text-lg font-bold"># changing the petal lengths</BlueText>
                   <br />
-                  to calculate for the petal lengths, i used <CodeText>react hook form</CodeText>'s <CodeText>watch</CodeText> function to track the respective <CodeText>&lt;input&gt;</CodeText> elements' values then mutliplied by some factor when scaling the petals. this resulted in a <RedText>linear</RedText> scale so i used a <BlueText>bezier curve</BlueText> to have the petals scale properly. finally, i used tailwind's <CodeText>transition</CodeText> class to animate the petals for that extra ✨
+                  to calculate for the petal lengths, i used <CodeText>react hook form</CodeText>&apos;s <CodeText>watch</CodeText> function to track the respective <CodeText>&lt;input&gt;</CodeText> elements&apos; values then mutliplied by some factor when scaling the petals. this resulted in a <RedText>linear</RedText> scale so i used a <BlueText>bezier curve</BlueText> to have the petals scale properly. finally, i used tailwind&apos;s <CodeText>transition</CodeText> class to animate the petals for that extra ✨
                 </span>
               </div>
               <div className="bg-[#fbfbfb] relative w-[50%] h-[100%] rounded-md p-16">
