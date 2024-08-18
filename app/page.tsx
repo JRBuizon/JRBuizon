@@ -97,9 +97,9 @@ export default function Landing() {
                 setTextExpanded(false);
               }
             }
-            className=" hover:scale-x-[-102%] hover:scale-y-[102%] transition-all duration-300 ease-out w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
+            className=" hover:rotate-[5deg] hover:right-[-30%]  w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
             <Link href='/about' className="cursor-yapointer">
-              <Image src={headerImage} unoptimized width={400} objectFit="cover" alt='eco' />
+              <Image src={headerImage} unoptimized width={400} objectFit="cover" alt='me' />
             </Link>
 
           </div>
