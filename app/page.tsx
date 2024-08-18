@@ -22,6 +22,10 @@ import { Cutive_Mono } from "next/font/google"
 import eco from '@/public/images/eco.gif'
 import incu from '@/public/images/incu.gif'
 import takbo from '@/public/images/takbo.gif'
+import takboCover from '@/public/images/takbo-cover.png'
+import YellowText from "@/components/yellowText";
+import ExperienceGained from "@/components/experienceGained";
+import ContentCard from "@/components/contentCard";
 
 const rethink = Rethink_Sans({ subsets: ['latin'] })
 const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
@@ -72,11 +76,11 @@ export default function Landing() {
 
 
   return (
-    <div className="relative overflow-x-clip flex flex-col w-full items-center">
+    <div className="relative bg-black overflow-x-clip flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
 
-      <div className="relative overflow-hidden flex bg-black flex-col w-full">
-        <div className="z-[2] bg-opacity-[90%] noselect bg-black w-[100%] flex flex-col items-start px-[10%] justify-center h-[100vh] tracking-widest text-white text-[64px]">
+      <div className="relative overflow-hidden flex flex-col w-full">
+        <div className="z-[2] bg-black bg-opacity-[90%] noselect w-[100%] flex flex-col items-start px-[10%] justify-center h-[100vh] tracking-widest text-white text-[64px]">
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} ><span className="">hi.</span> i&apos;m ryan.</span>
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
 
@@ -98,7 +102,6 @@ export default function Landing() {
             className=" hover:scale-x-[-102%] hover:scale-y-[102%] transition-all duration-300 ease-out w-fit overflow-hidden origin-top-left absolute right-[-27%] -bottom-16 scale-x-[-100%] brightness-[80%] contrast-[115%]">
             <Link href='/about' className="cursor-yapointer">
               <Image src={headerImage} unoptimized width={400} objectFit="cover" alt='eco' />
-
             </Link>
 
           </div>
@@ -114,42 +117,32 @@ export default function Landing() {
       {/* WORKS SECTION */}
       <HorizontalScroll backwards>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <div className="z-[4] gap-y-12 bg-black flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
-
+      <div className="gap-y-12 flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
         <div className="flex flex-col items-start w-full">
           {/* KINHUB SECTION */}
           <span className="text-yawhite pb-4">working at <Link target="_blank" className="cursor-yapointer text-yablue outline-none" href="https://kinhub.com">kinhub</Link> <span className="text-xs">(2023<span className="text-sm"> - present</span>)</span></span>
 
           <div className="flex flex-row w-full gap-x-[32px]">
-            <div className={clsx("text-yawhite flex w-[32%] flex-col text-sm", rethink.className)}>
+            <div className={clsx("text-yawhite flex w-[32%] flex-col text-sm tracking-wide", rethink.className)}>
               <LinkCard className="bg-white" gif source={kinhub} link="https://kinhub.com" />
 
               <BlueText className="text-lg font-bold pt-2 pb-1"># junior full-stack developer</BlueText>
               <span>
                 kinhub has been my home for the past year and a few. i started working freelance for them back when i was still in highschool. working here has been one of the most valuable experiences of my career in terms of both the technical skills and connections acquired.
               </span>
-              <span className="pt-2">
-                +{" "}
-                <BlueText>agile-based work environment</BlueText>
-                {" "}(sprints, tickets, stand-ups)
-              </span>
-              <span>
-                +{" "}
-                <GreenText>
-                  frontend development skills
-                </GreenText>
-                {" "}(next.js, react, tailwind)
-              </span>
-              <span>
-                +{" "}
-                <GreenText>
-                  backend development skills
-                </GreenText>
-                {' '} (APIs, databases, docker)
-              </span>
+              <ExperienceGained
+                blues={[{ emphasis: 'agile-based work environment', parenthesis: 'sprints, tickets, stand-ups' }]}
+                greens={
+                  [
+                    { emphasis: 'frontend development skills', parenthesis: 'next.js, react, tailwind' },
+                    { emphasis: 'backend development skills', parenthesis: 'APIs, databases, docker' }
+                  ]
+                }
+              />
+
             </div>
             <div className="w-[65%] flex flex-row gap-x-[32px]">
-              <div className={clsx("text-yawhite flex w-[50%] flex-col text-sm", rethink.className)}>
+              <div className={clsx("text-yawhite flex w-[50%] flex-col text-sm tracking-wide", rethink.className)}>
                 <span>
                   <BlueText className="text-lg font-bold leading-none pb-1"># a notable output</BlueText>
                   <br />
@@ -180,16 +173,67 @@ export default function Landing() {
         <div className="flex flex-col items-start w-full">
           {/* GOLAUNCH SECTION */}
           <span className="text-yawhite pb-4">projects at <GreenText><Link target="_blank" className="outline-none cursor-yapointer" href="https://golaunch.live">golaunch.live</Link></GreenText></span>
-          <div className="flex flex-row gap-x-[32px] w-full">
-            <LinkCard source={mwm} link="https://mindwhatmatters.com.sg" />
-            <LinkCard source={mdg} link="https://museodelgaleon.org" gif />
-            <LinkCard source={bcom} link="https://be-come.org" />
+          <div className="grid grid-cols-3 gap-x-[32px] w-full">
+            <ContentCard color="green" imageSource={mdg} title="museo del galeon" link="https://museodelgaleon.org">
+              museo del galeon was the first project i worked on at <GreenText><Link target="_blank" className="outline-none cursor-yapointer" href="https://golaunch.live">golaunch.live</Link></GreenText> as well as using a website builder (<RedText>elementor</RedText> at first then the <YellowText>gutenberg editor</YellowText>).
+              it was pretty daunting having to learn so much on a very tight timeline. overall, a nice and simplistic website.
+              <ExperienceGained yellows={
+                [
+                  { emphasis: 'wordpress developer skills', parenthesis: 'elementor, gutenberg editor' },
+                ]
+              }
+                blues={
+                  [
+                    { emphasis: 'domain management skills', parenthesis: 'hostinger, elementor' },
+                  ]
+                } />
+            </ContentCard>
+            <ContentCard color="blue" imageSource={bcom} title="become" link="https://be-come.org">
+              after <GreenText>museo del galeon</GreenText>, we decided to move forward with the <YellowText>gutenberg editor</YellowText>. become was the first website we built fully using this editor and it turned out quite well (imo).
+              working with custom posts and custom layouts was extremely tedious tho.
+              <ExperienceGained yellows={
+                [
+                  { emphasis: 'custom wordpress posts', parenthesis: 'custom fields, templates, etc' },
+                ]
+              }
+                greens={
+                  [
+                    { emphasis: 'multilingual site', parenthesis: 'english, spanish' },
+                  ]
+                } />
+            </ContentCard>
+            <ContentCard color="yellow" imageSource={mwm} title="mind what matters" link="https://mindwhatmatters.com.sg">
+              mind what matters was the straw that broke my back (being the camel that i am). custom posts, custom filtering, dozens of post data to transfer manually--this project was... taxing to say the least.
+              <ExperienceGained yellows={
+                [
+                  { emphasis: 'more wordpress skills', parenthesis: 'custom filtering, multiple custom templates, tagging' },
+                ]
+              }
+                reds={
+                  [
+                    { emphasis: 'mental fortitude 💀' },
+                  ]
+                } />
+            </ContentCard>
           </div>
         </div>
       </div >
 
       {/* CONTACT SECTION */}
-      <HorizontalScroll backwards>fun case studies /// fun case studies /// fun case studies</HorizontalScroll>
+      <HorizontalScroll backwards>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
+      <HorizontalScroll>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
+
+      <div className="gap-y-12 flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
+
+        <div className="grid grid-cols-3 gap-x-[32px] w-full">
+          <ContentCard color="yellow" imageSource={takboCover} title="Takbo.io" link="https://stells.design/takbo">
+            takbo was a game <GreenText><Link href='https://stells.design' target="_blank" className="cursor-yapointer">Stella</Link></GreenText>, Ramon, and i created back in 2022. we made in 2 weeks and got hella players before dying off right after 😅
+            <br />
+            <br />
+            i&apos;m not great with words so check out the case study <GreenText><Link href='https://stells.design' target="_blank" className="cursor-yapointer">Stella</Link></GreenText> made by clicking the card above. the game isn&apos;t &quot;officially&quot; hosted anywhere anymore, but i made the repository soooo <BlueText><Link href='https://jrbuizon.github.io/takbo.io/public/' className="text-xs cursor-yapointer" target="_blank">(click here)</Link></BlueText>
+          </ContentCard>
+        </div>
+      </div>
 
       {/* LABS SECTION */}
       <HorizontalScroll>css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox</HorizontalScroll>
