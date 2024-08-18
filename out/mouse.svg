@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="3.175mm"
+   height="3.1750002mm"
+   viewBox="0 0 3.175 3.1750002"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-54.60169,-93.972348)">
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       id="path1"
+       cx="56.18919"
+       cy="95.559845"
+       r="1.5875" />
+    <circle
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="circle1"
+       cx="56.18919"
+       cy="95.559845"
+       r="1.3229166" />
+  </g>
+</svg>
