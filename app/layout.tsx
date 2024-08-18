@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Alata } from "next/font/google";
 import "./globals.css";
+import NextConfig from '@/next.config.mjs';
 
 const alata = Alata({ weight: "400", subsets: ["latin"] });
 
@@ -16,6 +17,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta property="og:url" content="https://jrbuizon.github.io/JRBuizon/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Jeremiah Ryan Buizon" />
+      <meta property="og:description" content="Jeremiah Ryan Buizon's personal website" />
+
+      <meta property="og:image" content={`${NextConfig.basePath}/public/images/cover.gif`} />
+
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:domain" content="jrbuizon.github.io" />
+      <meta property="twitter:url" content="https://jrbuizon.github.io/JRBuizon/" />
+      <meta name="twitter:title" content="Jeremiah Ryan Buizon" />
+      <meta name="twitter:description" content="Jeremiah Ryan Buizon's personal website" />
+
+      <meta property="twitter:image" content={`${NextConfig.basePath}/public/images/cover.gif`} />
+
       <body className={alata.className}>{children}</body>
     </html>
   );

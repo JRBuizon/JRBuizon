@@ -28,20 +28,12 @@ const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
 
 export default function Landing() {
   const [textExpanded, setTextExpanded] = useState(false);
-  const [carryingRed, setCarryingRed] = useState(false);
-  const [carryingBlue, setCarryingBlue] = useState(false);
-  const [carryingYellow, setCarryingYellow] = useState(false);
-  const [carryingGreen, setCarryingGreen] = useState(false);
   const [coolText, setCoolText] = useState("awesome");
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
 
   const [hoverText, setHoverText] = useState("scratch fortune");
 
-  const redRef = useRef<HTMLSpanElement>(null)
-  const blueRef = useRef<HTMLSpanElement>(null)
-  const greenRef = useRef<HTMLSpanElement>(null)
-  const yellowRef = useRef<HTMLSpanElement>(null)
   const mouseTextRef = useRef<HTMLSpanElement>(null)
 
   function shuffleCoolText() {
@@ -57,37 +49,15 @@ export default function Landing() {
       mouseTextRef.current.style.top = ((e.clientY - mouseTextRef.current.offsetHeight) + window.scrollY) + "px";
       mouseTextRef.current.style.left = (e.clientX - (mouseTextRef.current.offsetWidth / 2)) + "px";
     }
-
-    if (carryingRed && redRef.current) {
-      redRef.current.style.top = ((e.clientY - (redRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
-      redRef.current.style.left = (e.clientX - (redRef.current.offsetWidth / 2)) + 'px';
-    }
-    if (carryingBlue && blueRef.current) {
-      blueRef.current.style.top = ((e.clientY - (blueRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
-      blueRef.current.style.left = (e.clientX - (blueRef.current.offsetWidth / 2)) + 'px';
-    }
-    if (carryingYellow && yellowRef.current) {
-      yellowRef.current.style.top = ((e.clientY - (yellowRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
-      yellowRef.current.style.left = (e.clientX - (yellowRef.current.offsetWidth / 2)) + 'px';
-    }
-    if (carryingGreen && greenRef.current) {
-      greenRef.current.style.top = ((e.clientY - (greenRef.current.offsetHeight / 2)) + window.scrollY) + 'px';
-      greenRef.current.style.left = (e.clientX - (greenRef.current.offsetWidth / 2)) + 'px';
-    }
   }
 
-  function handleMouseUp(e: MouseEvent) {
-    if (carryingRed && redRef.current) {
-      setCarryingRed(false)
-      setCarryingBlue(false)
-      setCarryingYellow(false)
-      setCarryingGreen(false)
-    }
-  }
   useEffect(() => {
+    function handleScroll() {
+      setTextExpanded(false)
+    }
     document.onmousemove = handleMouseMove;
-    document.onmouseup = handleMouseUp;
-  }, [])
+    document.onscroll = handleScroll;
+  }, [mouseX, mouseY])
 
   function randomFortune() {
     const fortunes = ['🔖大吉', '🔖吉', '🔖大吉', '🔖半吉', '🔖末吉', '🔖末小吉', '🔖凶'];
@@ -100,29 +70,34 @@ export default function Landing() {
     <div className="relative overflow-x-clip flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute text-xs", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
 
-      <div className="fixed h-[100vh] flex flex-row w-full">
-        <span ref={redRef} onMouseDown={() => setCarryingRed(true)} onMouseUp={() => setCarryingRed(false)} id="red" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yared p-2 top-[63%] left-[5%]" />
-        <span ref={blueRef} onMouseDown={() => setCarryingBlue(true)} onMouseUp={() => setCarryingBlue(false)} id="blue" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yablue p-2 top-[63%] left-[8%]" />
-        <span ref={yellowRef} onMouseDown={() => setCarryingYellow(true)} onMouseUp={() => setCarryingYellow(false)} id="yellow" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yayellow p-2 top-[63%] left-[11%]" />
-        <span ref={greenRef} onMouseDown={() => setCarryingGreen(true)} onMouseUp={() => setCarryingGreen(false)} id="green" style={{ 'position': 'absolute' }} className="z-[3] cursor-yapointer origin-center absolute bg-yagreen p-2 top-[63%] left-[14%]" />
+      <div className="flex flex-row w-full">
         <div className="z-[0] noselect bg-black w-[50%] flex flex-col items-start px-[5%] justify-center h-[100vh] tracking-widest text-white text-[48px]">
-          <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} >hi. i&apos;m ryan.</span>
-          <span onMouseEnter={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
+          <span onMouseOver={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} ><span className="">hi.</span> i&apos;m ryan.</span>
+          <span onMouseOver={() => { setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); setCoolText(shuffleCoolText()); }} className=" flex flex-row items-center gap-x-4">i develop<TypeWriterAnimation /></span>
+
+          <div className="text-[0px] flex flex-row gap-x-8 pt-4">
+            <span className="z-[1] bg-yared p-2" />
+            <span className="z-[1] bg-yablue p-2" />
+            <span className="z-[1] bg-yayellow p-2" />
+            <span className="z-[1] bg-yagreen p-2" />
+          </div>
         </div>
         <div className={clsx("pointer-events-none noselect relative w-[50%] h-[100vh] text-lg grid grid-cols-3 grid-rows-3", cutive.className)}>
-          <div className="w-full relative">
-            <Image src={incu} unoptimized fill objectFit="cover" alt='incu' />
-          </div>
+
           <div className="w-full relative">
             <Image src={takbo} unoptimized fill objectFit="cover" alt='takbo' />
-          </div>
-          <div className="w-full relative">
-            <Image src={flower} unoptimized fill objectFit="cover" alt='flower' />
           </div>
           <div className="w-full relative">
             <Image src={eco} unoptimized fill objectFit="cover" alt='eco' />
           </div>
           <div className="w-full relative flex items-center justify-center">these</div>
+
+          <div className="w-full relative">
+            <Image src={flower} unoptimized fill objectFit="cover" alt='flower' />
+          </div>
+          <div className="w-full relative">
+            <Image src={incu} unoptimized fill objectFit="cover" alt='incu' />
+          </div>
           <div className="w-full relative flex items-center justify-center">are</div>
           <div className="w-full relative flex items-center justify-center">still</div>
           <div className="w-full relative flex items-center justify-center">empty</div>
@@ -133,7 +108,6 @@ export default function Landing() {
       </div>
 
       {/* WORKS SECTION */}
-      <div className="mt-[100vh]" />
       <HorizontalScroll>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
       <div className="z-[4] gap-y-12 bg-black flex flex-col items-start w-full px-[5%] pt-[3%] pb-[5%]">
 
@@ -210,7 +184,10 @@ export default function Landing() {
       </div >
 
       {/* CONTACT SECTION */}
-      <HorizontalScroll>fun case studies /// fun case studies /// fun case studies</HorizontalScroll>
+      <HorizontalScroll backwards>fun case studies /// fun case studies /// fun case studies</HorizontalScroll>
+
+      {/* LABS SECTION */}
+      <HorizontalScroll>css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox /// css sandbox</HorizontalScroll>
 
     </div >
   );

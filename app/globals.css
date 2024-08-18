@@ -124,6 +124,19 @@
       transform: translateX(-50vw);
     }
   }
+
+  .horizontal-scroll-b
+  {
+    animation: horizontal-b 1.5s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  @keyframes horizontal-b {
+    to {
+      transform: translateX(50vw);
+    }
+  }
 body {
   cursor: url('../public/mouse.svg'), auto;
 }
