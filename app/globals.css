@@ -151,6 +151,17 @@ span{
   @apply tracking-wide
 }
 
+.ball {
+  display: block;
+  background: #525252;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  margin: 0;
+
+  background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #5cabff, #000);
+}
+
 #start-point:hover span {
   rotate: -15deg
 }
