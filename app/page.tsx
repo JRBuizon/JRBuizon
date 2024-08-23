@@ -1,9 +1,8 @@
 'use client'
 
-import TypeWriterAnimation from "@/components/typewriterAnimation";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { default as NextImage } from "next/image";
 import Link from "next/link";
 import mdg from '@/public/images/mdg.gif'
 import mwm from '@/public/images/mwm.png'
@@ -16,10 +15,8 @@ import BlueText from "@/components/blueText";
 import GreenText from "@/components/greenText";
 import LinkCard from "@/components/linkCard";
 import HorizontalScroll from "@/components/horizontalScroll";
-import RedText from "@/components/redText";
 import { Cutive_Mono } from "next/font/google"
 import takboCover from '@/public/images/takbo-cover.png'
-import YellowText from "@/components/yellowText";
 import ExperienceGained from "@/components/experienceGained";
 import ContentCard from "@/components/contentCard";
 
@@ -27,13 +24,11 @@ const rethink = Rethink_Sans({ subsets: ['latin'] })
 const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
 
 export default function Landing() {
-
   const [textExpanded, setTextExpanded] = useState(false);
   const [coolText, setCoolText] = useState("awesome");
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
-
-  const [hoverText, setHoverText] = useState("scratch fortune");
+  const ballRef = useRef<HTMLDivElement>(null)
+  const ball2Ref = useRef<HTMLDivElement>(null)
+  const cloudRef = useRef<HTMLDivElement>(null)
 
   const mouseTextRef = useRef<HTMLSpanElement>(null)
 
@@ -44,8 +39,6 @@ export default function Landing() {
   }
 
   function handleMouseMove(e: MouseEvent) {
-    setMouseX(e.clientX)
-    setMouseY(e.clientY)
     if (mouseTextRef.current) {
       mouseTextRef.current.style.top = ((e.clientY - mouseTextRef.current.offsetHeight) + window.scrollY) + "px";
       mouseTextRef.current.style.left = (e.clientX - (mouseTextRef.current.offsetWidth / 2)) + "px";
@@ -59,29 +52,24 @@ export default function Landing() {
     document.onmousemove = handleMouseMove;
     document.onscroll = handleScroll;
 
-    window.addEventListener('mousemove', (e) => {
-      document.body.style.setProperty('--mouseY', (e.clientY - (document.querySelector('.ball')?.getBoundingClientRect().y + document.querySelector('.ball')?.getBoundingClientRect().height/2)).toString());
-      document.body.style.setProperty('--mouseX', (e.clientX - ((document.querySelector('.ball')?.getBoundingClientRect().x + document.querySelector('.ball')?.getBoundingClientRect().width/2))).toString());
-  }, false);
-  }, [mouseX, mouseY])
+  }, [])
 
-  function randomFortune() {
-    const fortunes = ['🔖大吉', '🔖吉', '🔖大吉', '🔖半吉', '🔖末吉', '🔖末小吉', '🔖凶'];
-    const fortuneIndex = Math.floor(Math.random() * fortunes.length)
-    setHoverText(fortunes[fortuneIndex])
-  }
 
 
   return (
     <div className="relative bg-black overflow-x-clip flex flex-col w-full items-center">
       <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
-
       <div className="relative overflow-hidden flex flex-col w-full">
         <div className="z-[3] bg-opacity-[90%] noselect w-[100%] flex flex-col items-start px-[10%] justify-center h-[100vh] tracking-widest text-white text-[64px]">
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} ><span className="">hi.</span> i&apos;m ryan.</span>
           <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} className=" flex flex-row items-center gap-x-4">i develop stuff</span>
-            <figure className="ball" />
         </div>
+        <div ref={ballRef} className="ball absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]" />
+        <div ref={ball2Ref} className="ball2 absolute top-[50%] translate-y-[-50%] translate-x-[-50%] left-[50%]" />
+
+        <div className="cloud absolute top-[50%] left-[50%]" />
+        <div className="cloud-v absolute top-[50%] left-[50%]" />
+        <div className="cloud-1 absolute top-[50%] left-[50%]" />
       </div>
 
       {/* WORKS SECTION */}
@@ -131,7 +119,7 @@ export default function Landing() {
               </div>
               <div className="bg-[#fbfbfb] relative w-[50%] h-[100%] rounded-md p-16">
                 <div className="bg-[#fbfbfb] relative w-full h-[100%] rounded-md">
-                  <Image unoptimized alt='flower' src={flower} fill objectFit="contain" />
+                  <NextImage unoptimized alt='flower' src={flower} fill objectFit="contain" />
                 </div>
               </div>
 

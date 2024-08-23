@@ -150,17 +150,143 @@ body {
 span{
   @apply tracking-wide
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .ball {
   display: block;
-  background: #525252;
+  background: #000;
+  border-width: 2px;
+  border-color: #fff;
   border-radius: 50%;
-  height: 300px;
-  width: 300px;
+  height: 208px;
+  width: 208px;
+  border-style: dashed;
+  z-index: 0;
   margin: 0;
-
-  background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #5cabff, #000);
+  transform-origin: 0% 0%;
+  animation: rotate 20s linear infinite;
 }
+
+@keyframes rotate {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.ball2 {
+  display: block;
+  background: #000;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+  margin: 0;
+  /* background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #fff,#fff 30%, #000); */
+}
+.cloud {
+  display: block;
+  background: #fff;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  margin: 0;
+  animation: horizontal-cloud 5s ease-in-out infinite, vertical-cloud 5s ease-in-out infinite, size-cloud 5s linear infinite;
+  /* background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #fff,#fff 30%, #000); */
+}
+.cloud-1 {
+  display: block;
+  background: #fff;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  margin: 0;
+  animation: horizontal-cloud 5s ease-in-out infinite, vertical-cloud-v 5s ease-in-out infinite, size-cloud 5s linear infinite;
+  animation-delay: -2s;
+  /* background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #fff,#fff 30%, #000); */
+}
+
+.cloud-v {
+  display: block;
+  background: #fff;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  margin: 0;
+  animation: horizontal-cloud-v 5s ease-in-out infinite, vertical-cloud-v 5s ease-in-out infinite, size-cloud 5s linear infinite;
+  animation-delay: -1s;
+  /* background: radial-gradient(circle at calc(var(--mouseX) * 1%) calc(var(--mouseY) * 1%), #fff,#fff 30%, #000); */
+}
+@keyframes vertical-cloud-v {
+  0% {
+    transform: translateY(800%);
+  }
+  50% {
+    transform: translateY(-900%);
+  }
+  100% {
+    transform: translateY(800%);
+  }
+}
+@keyframes horizontal-cloud-v {
+  0% {
+    translate: -800%;
+  }
+  50% {
+    translate: 900%;
+  }
+  100% {
+    translate: -800%;
+  }
+}
+@keyframes vertical-cloud {
+  25% {
+    transform: translateY(-200%);
+  }
+  75% {
+    transform: translateY(200%);
+  }
+}
+@keyframes horizontal-cloud {
+  0% {
+    translate: 1000%;
+  }
+  50% {
+    translate: -1100%;
+  }
+  100% {
+    translate: 1000%;
+  }
+}
+@keyframes size-cloud {
+  0% {
+    scale: 100%;
+  }
+  25% {
+    scale: 75%;
+    z-index: 0;
+  }
+  50% {
+    scale: 100%;
+  }
+  75% {
+    scale: 150%;
+  }
+  100% {
+    scale: 100%;
+    z-index: 2;
+  }
+}
+
 
 #start-point:hover span {
   rotate: -15deg
