@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Alata } from "next/font/google";
+import { Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import NextConfig from '@/next.config.mjs';
 
-const alata = Alata({ weight: "400", subsets: ["latin"] });
+const rethink = Rethink_Sans({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jeremiah Ryan Buizon",
@@ -32,8 +32,10 @@ export default function RootLayout({
       <meta name="twitter:description" content="Jeremiah Ryan Buizon's personal website" />
 
       <meta property="twitter:image" content={`${NextConfig.basePath}/public/images/cover.gif`} />
-
-      <body className={alata.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={rethink.className}>{children}</body>
     </html>
   );
 }

@@ -10,195 +10,95 @@ import bcom from '@/public/images/become.png'
 import kinhub from '@/public/images/kinhub.png'
 import flower from '@/public/images/flower.gif'
 import { Rethink_Sans } from "next/font/google";
-import CodeText from "@/components/codeText";
-import BlueText from "@/components/blueText";
-import GreenText from "@/components/greenText";
-import LinkCard from "@/components/linkCard";
-import HorizontalScroll from "@/components/horizontalScroll";
-import { Cutive_Mono } from "next/font/google"
 import takboCover from '@/public/images/takbo-cover.png'
-import ExperienceGained from "@/components/experienceGained";
-import ContentCard from "@/components/contentCard";
+import { Alata } from "next/font/google";
+const alata = Alata({ weight: "400", subsets: ["latin"] });
 
-const rethink = Rethink_Sans({ subsets: ['latin'] })
-const cutive = Cutive_Mono({ weight: "400", subsets: ['latin'] })
+const TOP_OFFSET = 50
+const LEFT_OFFSET = 50
+
+const socButtonClasses = "border-none outline-none bg-transparent transition-all duration-250 ease-out w-[24px] h-[24px] overflow-hidden"
 
 export default function Landing() {
-  const [textExpanded, setTextExpanded] = useState(false);
-  const [coolText, setCoolText] = useState("awesome");
-  const ballRef = useRef<HTMLDivElement>(null)
-  const ball2Ref = useRef<HTMLDivElement>(null)
-  const cloudRef = useRef<HTMLDivElement>(null)
-
-  const mouseTextRef = useRef<HTMLSpanElement>(null)
-
-  function shuffleCoolText() {
-    const words = ["wow so cool", "✨ awesome ✨", "how'd he do that?", "lit 🔥", "fire 🔥", "✨ amazing ✨", "siiick"];
-    const wordIndex = Math.floor(Math.random() * words.length)
-    return words[wordIndex]
-  }
+  const circleMouseRef = useRef<HTMLSpanElement>(null)
+  const dashedMouseRef = useRef<HTMLSpanElement>(null)
+  const outlineMouseRef = useRef<HTMLSpanElement>(null)
 
   function handleMouseMove(e: MouseEvent) {
-    if (mouseTextRef.current) {
-      mouseTextRef.current.style.top = ((e.clientY - mouseTextRef.current.offsetHeight) + window.scrollY) + "px";
-      mouseTextRef.current.style.left = (e.clientX - (mouseTextRef.current.offsetWidth / 2)) + "px";
+    if (circleMouseRef.current) {
+      circleMouseRef.current.style.top = ((e.clientY - (circleMouseRef.current.offsetHeight / 2)) + window.scrollY) + "px";
+      circleMouseRef.current.style.left = (e.clientX - (circleMouseRef.current.getBoundingClientRect().width / 2)) + "px";
     }
+
+    setTimeout(function () {
+      if (outlineMouseRef.current) {
+        outlineMouseRef.current.style.top = ((e.clientY - (outlineMouseRef.current.offsetHeight / 2)) + window.scrollY) + "px";
+        outlineMouseRef.current.style.left = (e.clientX - (outlineMouseRef.current.getBoundingClientRect().width / 2)) + "px";
+      }
+
+    }, 50);
+
+    setTimeout(function () {
+      if (dashedMouseRef.current) {
+        dashedMouseRef.current.style.top = ((e.clientY - (dashedMouseRef.current.offsetHeight / 2)) + window.scrollY) + "px";
+        dashedMouseRef.current.style.left = (e.clientX - (dashedMouseRef.current.getBoundingClientRect().width / 2.5)) + "px";
+      }
+
+    }, 100);
   }
 
   useEffect(() => {
-    function handleScroll() {
-      setTextExpanded(false)
-    }
-    document.onmousemove = handleMouseMove;
-    document.onscroll = handleScroll;
-
-  }, [])
-
-
+    window.onmousemove = handleMouseMove;
+  })
 
   return (
-    <div className="relative bg-black overflow-x-clip flex flex-col w-full items-center">
-      <span ref={mouseTextRef} id="hover-text" style={{ 'pointerEvents': 'none' }} className={clsx("z-[9] origin-center text-black absolute", !textExpanded && "opacity-0", textExpanded && "text-white")}>{coolText}</span>
-      <div className="relative overflow-hidden flex flex-col w-full">
-        <div className="z-[3] bg-opacity-[90%] noselect w-[100%] flex flex-col items-start px-[10%] justify-center h-[100vh] tracking-widest text-white text-[64px]">
-          <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} ><span className="">hi.</span> i&apos;m ryan.</span>
-          <span onMouseOver={() => { setCoolText(shuffleCoolText()); setTextExpanded(true); }} onMouseLeave={() => { setTextExpanded(false); }} className=" flex flex-row items-center gap-x-4">i develop stuff</span>
-        </div>
-        <div ref={ballRef} className="ball absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]" />
-        <div ref={ball2Ref} className="ball2 absolute top-[50%] translate-y-[-50%] translate-x-[-50%] left-[50%]" />
+    <div className="text-yawhite relative bg-black overflow-x-clip flex flex-col w-full items-start h-[100%] overflow-hidden p-6">
+      <span ref={circleMouseRef} className={clsx("z-[9] absolute border border-yawhite rounded-full noselect pointer-events-none h-[8px] w-[8px]",)} />
+      <span ref={outlineMouseRef} className={clsx("z-[8] absolute border border-yawhite rounded-full noselect pointer-events-none h-[24px] w-[24px]",)} />
+      <span ref={dashedMouseRef} className={clsx("z-[7] absolute border border-yawhite border-dashed rotate-animate rounded-full noselect pointer-events-none h-[32px] w-[32px]",)} />
 
-        <div className="cloud absolute top-[50%] left-[50%]" />
-        <div className="cloud-v absolute top-[50%] left-[50%]" />
-        <div className="cloud-1 absolute top-[50%] left-[50%]" />
+      <span className="font-bold text-[5rem] leading-none">Jeremiah Ryan</span>
+      <div className="py-0 my-0 px-0 mx-0 flex flex-row items-end gap-x-2">
+        <span className="font-bold text-[5rem] leading-none -mb-2">Buizon</span>
+        <Link target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className={socButtonClasses}>
+          <div className="transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[0%] hover:translate-x-[-50%]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
+              <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">
+              <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />
+            </svg>
+          </div>
+        </Link>
+        <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className={socButtonClasses}>
+          <div className="transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
+            <svg height="24" aria-hidden="true" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" className="fill-yawhite">
+              <path d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z" />
+            </svg>
+            <svg height="24" aria-hidden="true" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" className="fill-yawhite">
+              <path d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z" />
+            </svg>
+          </div>
+        </Link>
+        <Link target="_blank" rel="noreferrer" href="https://www.instagram.com/jeremiahbuizon/" className={socButtonClasses}>
+          <div className="transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[-50%] hover:translate-x-[0%]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+            </svg>
+          </div>
+        </Link>
       </div>
 
-      {/* WORKS SECTION */}
-      <HorizontalScroll className="bg-yablue" backwards>work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <HorizontalScroll className="bg-yagreen">work experience stuff  /// work experience stuff /// work experience stuff</HorizontalScroll>
-      <div className="gap-y-12 flex flex-col items-start w-full px-[15%] pt-[3%] pb-[5%]">
-        <div className="flex flex-col items-start w-full">
-          {/* KINHUB SECTION */}
-          <span className="text-yawhite pb-4">working at <Link target="_blank" className="cursor-yapointer text-yablue outline-none" href="https://kinhub.com">kinhub</Link> <span className="text-xs">(2023<span className="text-sm"> - present</span>)</span></span>
 
-          <div className="flex flex-row w-full gap-x-[64px]">
-            <div className={clsx("text-yawhite flex w-[32%] flex-col text-sm tracking-wide", rethink.className)}>
-              <LinkCard className="bg-white" gif source={kinhub} link="https://kinhub.com" />
-
-              <BlueText className="text-lg font-bold pt-2 pb-1"># junior full-stack developer</BlueText>
-              <span>
-                kinhub has been my home for the past year and a few. i started working freelance for them back when i was still in highschool. working here has been one of the most valuable experiences of my career in terms of both the technical skills and connections acquired.
-              </span>
-              <ExperienceGained
-                blues={[{ emphasis: 'agile-based work environment', parenthesis: 'sprints, tickets, stand-ups' }]}
-                greens={
-                  [
-                    { emphasis: 'frontend development skills', parenthesis: 'next.js, react, tailwind' },
-                    { emphasis: 'backend development skills', parenthesis: 'APIs, databases, docker' }
-                  ]
-                }
-              />
-
-            </div>
-            <div className="w-[65%] flex flex-row gap-x-[64px]">
-              <div className={clsx("text-yawhite flex w-[50%] flex-col text-sm tracking-wide", rethink.className)}>
-                <span>
-                  <BlueText className="text-lg font-bold leading-none pb-1"># a notable output</BlueText>
-                  <br />
-                  this flower input field is by far the most fun i&apos;ve had designing a frontend component for kinhub. being an input field, it was the perfect blend of frontend and backend. it was designed after <Link className="outline-none text-yared cursor-yapointer" href="https://www.6seconds.org/2022/03/13/plutchik-wheel-emotions/" target="_blank">[ Robert Plutchik&apos;s wheel of emotions ]</Link> and is compatible with <CodeText>react hook form</CodeText>.
-                  <br />
-                  <br />
-                  <BlueText className="text-lg font-bold"># positioning the elements</BlueText>
-                  <br />
-                  i positioned <CodeText>&lt;input&gt;</CodeText> tags in a circle using polar coordinates. a petal svg was positioned over each <CodeText>&lt;input&gt;</CodeText> with the origin point at one end of the petal / <CodeText>&lt;input&gt;</CodeText>.
-                  <br />
-                  <br />
-                  <BlueText className="text-lg font-bold"># changing the petal lengths</BlueText>
-                  <br />
-                  to calculate for the petal lengths, i used <CodeText>react hook form</CodeText>&apos;s <CodeText>watch</CodeText> function to track the respective <CodeText>&lt;input&gt;</CodeText> elements&apos; values then mutliplied by some factor when scaling the petals. this resulted in a linear scale so i used a bezier curve to have the petals scale properly. finally, i used tailwind&apos;s <CodeText>transition</CodeText> class to animate the petals for that extra ✨
-                </span>
-              </div>
-              <div className="bg-[#fbfbfb] relative w-[50%] h-[100%] rounded-md p-16">
-                <div className="bg-[#fbfbfb] relative w-full h-[100%] rounded-md">
-                  <NextImage unoptimized alt='flower' src={flower} fill objectFit="contain" />
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-        <div className="flex flex-col items-start w-full">
-          {/* GOLAUNCH SECTION */}
-          <span className="text-yawhite pb-4">projects at <GreenText><Link target="_blank" className="outline-none cursor-yapointer" href="https://golaunch.live">golaunch.live</Link></GreenText></span>
-          <div className="grid grid-cols-2 gap-x-[64px] gap-y-[64px] w-full">
-            <ContentCard color="green" imageSource={mdg} title="museo del galeon" link="https://museodelgaleon.org">
-              museo del galeon was the first project i worked on at <GreenText><Link target="_blank" className="outline-none cursor-yapointer" href="https://golaunch.live">[ golaunch.live ]</Link></GreenText> as well as using a website builder (elementor at first then the gutenberg editor).
-              it was pretty daunting having to learn so much on a very tight timeline. overall, a nice and simplistic website.
-              <ExperienceGained yellows={
-                [
-                  { emphasis: 'wordpress developer skills', parenthesis: 'elementor, gutenberg editor' },
-                ]
-              }
-                blues={
-                  [
-                    { emphasis: 'domain management skills', parenthesis: 'hostinger, elementor' },
-                  ]
-                } />
-            </ContentCard>
-            <ContentCard color="blue" imageSource={bcom} title="become" link="https://be-come.org">
-              after museo del galeon, we decided to move forward with the gutenberg editor. become was the first website we built fully using this editor and it turned out quite well (imo).
-              working with custom posts and custom layouts was extremely tedious tho.
-              <ExperienceGained yellows={
-                [
-                  { emphasis: 'custom wordpress posts', parenthesis: 'custom fields, templates, etc' },
-                ]
-              }
-                greens={
-                  [
-                    { emphasis: 'multilingual site', parenthesis: 'english, spanish' },
-                  ]
-                } />
-            </ContentCard>
-            <ContentCard color="yellow" imageSource={mwm} title="mind what matters" link="https://mindwhatmatters.com.sg">
-              mind what matters was the straw that broke my back (being the camel that i am). custom posts, custom filtering, dozens of post data to transfer manually--this project was... taxing to say the least.
-              <ExperienceGained yellows={
-                [
-                  { emphasis: 'more wordpress skills', parenthesis: 'custom filtering, multiple custom templates, tagging' },
-                ]
-              }
-                reds={
-                  [
-                    { emphasis: 'mental fortitude 💀' },
-                  ]
-                } />
-            </ContentCard>
-          </div>
-        </div>
-      </div >
-
-      {/* CONTACT SECTION */}
-      <HorizontalScroll className="bg-yared" backwards>cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
-      <HorizontalScroll className="bg-yablue">cool, i made that /// cool, i made that /// cool, i made that</HorizontalScroll>
-
-      <div className="gap-y-12 flex flex-col items-start w-full px-[15%] pt-[3%] pb-[5%]">
-
-        <div className="grid grid-cols-2 gap-x-[64px] w-full">
-          <ContentCard color="yellow" imageSource={takboCover} title="Takbo.io" link="https://stells.design/takbo">
-            takbo was a game <GreenText><Link href='https://stells.design' target="_blank" className="cursor-yapointer">Stella</Link></GreenText>, Ramon, and i created back in 2022. we made in 2 weeks and got hella players before dying off right after 😅
-            <br />
-            <br />
-            i&apos;m not great with words so check out the case study <GreenText><Link href='https://stells.design' target="_blank" className="cursor-yapointer">Stella</Link></GreenText> made by clicking the card above. the game isn&apos;t &quot;officially&quot; hosted anywhere anymore, but i made the repository soooo <BlueText><Link href='https://jrbuizon.github.io/takbo.io/public/' className="text-xs cursor-yapointer" target="_blank">(click here)</Link></BlueText>
-          </ContentCard>
-        </div>
+      <div className="relative overflow-hidden flex flex-col w-[100vw] pt-[2%] noselect items-start px-[3%] justify-start h-[100vh]">
       </div>
-      {/* <div className="px-[10%] pt-[1%] bg-yawhite h-[11vh] w-full">
-          <div className="flex flex-row gap-x-4">
-            <span className="text-[24px] text-black font-bold tracking-widest">where i&apos;m @</span>
-            <Link href="https://www.instagram.com/jeremiahbuizon/" className="text-[24px] text-black tracking-widest hover:opacity-[50%] cursor-yapointer transition-all duration-300 ease-out delay-50">instagram</Link>
-            <Link href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className="text-[24px] text-black tracking-widest hover:opacity-[50%] cursor-yapointer transition-all duration-300 ease-out delay-50">linkedin</Link>
-          </div>
-        </div> */}
     </div >
   );
 }
