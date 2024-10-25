@@ -21,23 +21,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "yawhite": {
-          DEFAULT: '#e2e2e2'
-        },
-        "ox-blue": {
-          DEFAULT: '#011638'
-        },
-        "charcoal": {
-          DEFAULT: '#364156'
-        },
-        "sage": {
-          DEFAULT: '#C9CBA3'
-        },
-        "peach": {
-          DEFAULT: '#FFE1A8'
-        },
-        "bitter": {
-          DEFAULT: '#E26D5C'
+        "blu": {
+          DEFAULT: "#6499E9"
         },
       }
 

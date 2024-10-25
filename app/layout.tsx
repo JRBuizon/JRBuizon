@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Rethink_Sans } from "next/font/google";
+import { Mulish } from "next/font/google";
 import "./globals.css";
 import NextConfig from '@/next.config.mjs';
 
-const rethink = Rethink_Sans({ weight: "400", subsets: ["latin"] });
+const font = Mulish({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jeremiah Ryan Buizon",
@@ -35,7 +35,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={rethink.className}>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
