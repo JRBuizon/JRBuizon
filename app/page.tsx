@@ -14,7 +14,6 @@ import takboCover from '@/public/images/takbo-cover.png'
 import InstagramIcon from "@/components/icons/instagram";
 import GithubIcon from "@/components/icons/github";
 import LinkedInIcon from "@/components/icons/linkedin";
-import { motion } from "framer-motion"
 
 const TOP_OFFSET = 50
 const LEFT_OFFSET = 50
