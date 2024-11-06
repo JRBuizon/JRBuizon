@@ -2,118 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Bold.ttf');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-BoldItalic.ttf');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-ExtraLight.ttf');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-ExtraLightItalic.ttf');
-    font-weight: 200;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Italic.ttf');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Light.ttf');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-LightItalic.ttf');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-MediumItalic.ttf');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-SemiBold.ttf');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-SemiBoldItalic.ttf');
-    font-weight: 600;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-Thin.ttf');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'JosefinSans';
-    src: url('../public/fonts/JosefinSans-ThinItalic.ttf');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-  }
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-span{
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-ExtraLight.ttf');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-ExtraLightItalic.ttf');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Italic.ttf');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Light.ttf');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-LightItalic.ttf');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-MediumItalic.ttf');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-SemiBold.ttf');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-SemiBoldItalic.ttf');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-Thin.ttf');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../public/fonts/JosefinSans-ThinItalic.ttf');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+span {
   @apply tracking-widest
 }
+
 html {
   scroll-behavior: smooth;
   background-color: black;
