@@ -21,6 +21,22 @@ const LEFT_OFFSET = 50
 const socButtonClasses = "border-none outline-none bg-transparent transition-all duration-250 ease-out w-[24px] h-[24px] overflow-hidden"
 
 export default function Landing() {
+
+  useEffect(() => {
+    async function getData() {
+      await fetch(`https://github.com/JRBuizon?tab=contributions`, {
+        headers: {
+          "x-requested-with": "XMLHttpRequest",
+          "Access-Control-Allow-Origin": "https://github.com"
+        }
+      })
+        .then((data) => { return data.json(); })
+        .then((data) => { console.log(data); });
+    }
+    getData()
+  }, [])
+
+
   return (
     <div className="relative bg-black overflow-x-clip flex flex-col w-full items-center justify-center h-[100vh] overflow-hidden px-6 py-4">
 
