@@ -51,13 +51,13 @@ export default function Landing() {
       <div className="py-0 my-0 px-0 mx-0 pt-2 flex flex-col items-center gap-y-3">
         <div className="flex flex-row items-center mt-2 gap-x-4 absolute select-none">
           <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing} >
-            <NextIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[14px] md:h-[16px]" />
+            <NextIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[20px] md:h-[24px] p-1" />
           </DraggableObject>
           <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing}>
-            <ReactIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[20px] md:h-[24px]" />
+            <ReactIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[28px] md:h-[32px] p-1" />
           </DraggableObject>
           <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing}>
-            <TailwindIcon className="hover:scale-[105%] transition-all duration-200 ease-out fill-white h-[14px] md:h-[16px]" />
+            <TailwindIcon className="hover:scale-[105%] transition-all duration-200 ease-out fill-white h-[20px] md:h-[24px] p-1" />
           </DraggableObject>
         </div>
 
