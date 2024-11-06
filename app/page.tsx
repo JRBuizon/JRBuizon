@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from "clsx";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
 import { default as NextImage } from "next/image";
 import Link from "next/link";
 import mdg from '@/public/images/mdg.gif'
@@ -23,10 +23,10 @@ import Draggable from "react-draggable";
 
 const socButtonClasses = "border-none outline-none bg-transparent transition-all duration-250 ease-out w-[24px] h-[24px] overflow-hidden"
 
-function DraggableObject({ children, className }: { children?: ReactNode, className?: string }) {
+function DraggableObject({ children, className, setGrabbing, grabbing }: { children?: ReactNode, className?: string, setGrabbing: Dispatch<SetStateAction<boolean>>, grabbing?: boolean }) {
   return (
-    <Draggable>
-      <div className={clsx("z-[1] cursor-pointer transition-all duration-150 ease-out", className)}>
+    <Draggable onStart={() => setGrabbing(true)} onStop={() => setGrabbing(false)} >
+      <div className={clsx("z-[1] transition-all duration-150 ease-out", className, !grabbing && "cursor-grab")}>
         {children}
       </div>
     </Draggable>
@@ -34,8 +34,9 @@ function DraggableObject({ children, className }: { children?: ReactNode, classN
 }
 
 export default function Landing() {
+  const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
-    <div className="overflow-hidden text-white relative bg-black flex flex-col w-full items-center justify-center h-[100vh] px-6 py-4">
+    <div className={clsx("overflow-hidden text-white relative bg-black flex flex-col w-full items-center justify-center h-[100vh] px-6 py-4", grabbing && "cursor-grabbing")}>
       <div className="pointer-events-none select-none flex flex-col items-center">
         <span className="pointer-events-none select-none mb-1 font-bold text-[1.2rem] md:text-[1.5rem] tracking-[0.2rem] leading-none">Jeremiah Ryan Buizon</span>
         <span className="pointer-events-none select-none relative justify-center text-nowrap uppercase font-bold flex bg-gradient-to-r items-center from-10% to-90% from-[#6895D2] via-[#FDE767] to-[#D04848] bg-clip-text text-[1.5rem] md:text-[2rem] text-transparent text-center select-auto">
@@ -49,13 +50,13 @@ export default function Landing() {
       </div>
       <div className="py-0 my-0 px-0 mx-0 pt-2 flex flex-col items-center gap-y-3">
         <div className="flex flex-row items-center mt-2 gap-x-4 absolute select-none">
-          <DraggableObject className="next-icon">
+          <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing} >
             <NextIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[14px] md:h-[16px]" />
           </DraggableObject>
-          <DraggableObject className="react-icon">
+          <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing}>
             <ReactIcon className="hover:scale-[105%] transition-all duration-200 ease-out h-[20px] md:h-[24px]" />
           </DraggableObject>
-          <DraggableObject className="tailwind-icon">
+          <DraggableObject setGrabbing={setGrabbing} grabbing={grabbing}>
             <TailwindIcon className="hover:scale-[105%] transition-all duration-200 ease-out fill-white h-[14px] md:h-[16px]" />
           </DraggableObject>
         </div>
