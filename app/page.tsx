@@ -43,7 +43,7 @@ export default function Landing() {
           Front-end Developer
         </span>
         <div className="pointer-events-none select-none flex flex-row items-center gap-x-1">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
           <span className="select-none font-bold text-[0.7rem] tracking-[0.2rem] leading-none my-2">MANILA, PHILIPPINES</span>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function Landing() {
 
         {/* SOCIAL MEDIA LINKS */}
         <div className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
-          <div className="flex flex-row gap-x-2 items-center">
+          <div className="flex flex-row gap-x-3 items-center">
             <Link target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className={socButtonClasses}>
               <div className="text-white hover:text-[#6895D2] transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[0%] hover:translate-x-[-50%]">
                 <LinkedInIcon />
