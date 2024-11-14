@@ -33,7 +33,7 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 export default function Landing() {
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
-    <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-3 grid w-full items-center justify-center h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
+    <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-3 grid w-full items-center justify-center h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
       <div>
 
       </div>
@@ -87,7 +87,7 @@ export default function Landing() {
         </div>
       </div>
 
-      <div className="pl-4 flex flex-col gap-y-8 items-start h-[100%] justify-start">
+      <div className="hidden lg:flex pl-4 flex-col gap-y-8 items-start h-[100%] justify-start">
         <div className="flex flex-col gap-y-4 items-start justify-start grayscale hover:grayscale-0 transition-all duration-300 ease-out opacity-[20%] hover:opacity-[100%]">
           <span className="tracking-wide uppercase leading-none text-sm -mb-2 font-bold">work</span>
           <div className="cursor-pointer relative h-[10rem] flex flex-row gap-x-2 opacity-[100%]">
