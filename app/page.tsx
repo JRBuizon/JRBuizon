@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from "clsx";
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
 import kinhub from '@/public/images/kinhub.png'
 import { IBM_Plex_Mono } from "next/font/google";
@@ -16,7 +16,9 @@ import TailwindIcon from "@/components/icons/tailwind";
 import Draggable from "react-draggable";
 import golaunch from "@/public/images/GoLaunchLogo.png"
 import sleeping2 from "@/public/images/sleeping2.jpg"
+import { getGithubContributions } from "./api/github/route"
 
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: '400' })
 
 const socButtonClasses = "border-none outline-none bg-transparent transition-all duration-250 ease-out w-[24px] h-[24px] overflow-hidden"
@@ -32,10 +34,17 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 }
 
 export default function Landing() {
+  const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
+  useEffect(() => {
+    async function getCon() {
+      await getGithubContributions().then((d) => setContributions(d.data?.user?.contributionsCollection?.contributionCalendar))
+    }
+    getCon()
+  }, [])
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
-    <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-3 grid gap-x-4 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
-      <div className="hidden lg:flex flex-col pr-4 pl-8 h-[100%]">
+    <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
+      <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
         <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md h-[100%] w-full">
           <span className="font-bold text-sm -mb-2 leading-none">ME</span>
           <div className="flex flex-row gap-x-2 w-full h-[10rem]">
@@ -49,28 +58,36 @@ export default function Landing() {
 
       </div>
 
-      <div className="flex flex-col items-center justify-center lg:justify-between gap-y-6">
-        <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-start hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
-          <span className="font-bold text-sm -mb-2 leading-none">CONTRIBUTIONS</span>
-          <div className="grid grid-flow-col grid-rows-7 gap-1 rounded-md w-fit">
-            {[{ contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            { contributionCount: 10, date: "2023-11-12" },
-            ].map(({ contributionCount, date }) => (
-              <div key={date} className={clsx("h-[8px] w-[8px] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-[#222] opacity-[100%]" : `opacity-[${10 * contributionCount}%] bg-[#6895D2]`)} />
+      <div className="lg:col-span-4 flex flex-col items-center justify-center lg:justify-between gap-y-6 px-2">
+        <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className="hidden lg:flex h-[100%] ">
+          <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-center items-center hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
+            <span className="font-bold text-sm -mb-3 leading-none h-0">CONTRIBUTIONS</span>
+            <div className="flex flex-row items-center justify-between w-full gap-x-1">
+              <span className="text-xs w-fit">{months[new Date().getMonth()]} ({new Date().getFullYear() - 1})</span>
+              <span className="text-xs w-fit">{months[new Date().getMonth()]} ({new Date().getFullYear()})</span>
+            </div>
+            <div className="grid grid-flow-col grid-rows-7 gap-[0.25vw] rounded-md w-fit">
+              {
+                contributions?.weeks.map(({ contributionDays }) => {
+                  return (contributionDays.map(({ contributionCount, date }) => {
+                    return (
+                      <div key={date} className={clsx("h-[0.47vw] w-[0.47vw] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-transparent" : contributionCount > 0 && contributionCount < 6 ? "opacity-[30%] bg-[#6895D2]" : contributionCount > 6 && contributionCount < 12 ? "opacity-[60%] bg-[#6895D2]" : contributionCount > 12 && contributionCount < 24 ? "opacity-[80%] bg-[#6895D2]" : "opacity-[100%] brightness-[150%] bg-[#6895D2]")} />
+                    )
+                  }))
+                })}
 
-            ))}
-
+            </div>
+            <div className="flex flex-row items-center justify-center w-full gap-x-1">
+              <span className="text-xs w-fit">less</span>
+              <div className="h-[7px] w-[7px] rounded-sm bg-[#222]" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[30%] bg-[#6895D2]" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[60%] bg-[#6895D2]" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[80%] bg-[#6895D2]" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[100%] brightness-[150%] bg-[#6895D2]" />
+              <span className="text-xs w-fit">more</span>
+            </div>
           </div>
-        </div>
+        </Link>
 
         <div className="flex flex-col items-center justify-center">
           <span className="pointer-events-none select-none mb-1 font-bold text-[1.2rem] md:text-[1.5rem] tracking-[0.2rem] leading-none">Jeremiah Ryan Buizon</span>
@@ -125,7 +142,7 @@ export default function Landing() {
 
       </div>
 
-      <div className="hidden lg:flex pl-4 flex-col gap-y-8 items-start h-[100%] justify-start">
+      <div className="col-span-3 hidden lg:flex flex-col gap-y-8 items-start h-[100%] justify-start">
         <div className="flex flex-col gap-y-4 items-start justify-start hover-container">
           <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">work</span>
           <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
