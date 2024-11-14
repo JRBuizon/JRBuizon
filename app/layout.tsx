@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Mulish } from "next/font/google";
+import { Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import NextConfig from '@/next.config.mjs';
 
-const font = Mulish({ weight: "400", subsets: ["latin"] });
+const font = Rethink_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Jeremiah Ryan Buizon",
