@@ -36,7 +36,7 @@ export default function Landing() {
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-3 grid gap-x-4 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
       <div className="hidden lg:flex flex-col pr-4 pl-8 h-[100%]">
-        <div className="hover:opacity-[100%] flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md h-[100%] w-full">
+        <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md h-[100%] w-full">
           <span className="font-bold text-sm -mb-2 leading-none">ME</span>
           <div className="flex flex-row gap-x-2 w-full h-[10rem]">
             <div className="relative w-[40%] h-[100%] rounded-md overflow-hidden">
@@ -50,7 +50,7 @@ export default function Landing() {
       </div>
 
       <div className="flex flex-col items-center justify-center lg:justify-between gap-y-6">
-        <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-start hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out">
+        <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-start hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
           <span className="font-bold text-sm -mb-2 leading-none">CONTRIBUTIONS</span>
           <div className="grid grid-flow-col grid-rows-7 gap-1 rounded-md w-fit">
             {[{ contributionCount: 10, date: "2023-11-12" },
