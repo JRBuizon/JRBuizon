@@ -1,7 +1,7 @@
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
-            GITHUB_API_KEY: string;
+            NEXT_PUBLIC_GITHUB_API_KEY: string;
         }
     }
 }
