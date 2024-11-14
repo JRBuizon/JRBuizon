@@ -36,7 +36,7 @@ export default function Landing() {
   const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
   useEffect(() => {
     async function getGithubContributions() {
-      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github").then((res) => res.json()).then((d) => setContributions(d.data?.data?.user?.contributionsCollection?.contributionCalendar));
+      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github").then((res) => res.json()).then((d) => { setContributions(d.data?.data?.user?.contributionsCollection?.contributionCalendar); console.log(d.data?.data?.user?.contributionsCollection?.contributionCalendar) });
     }
     getGithubContributions()
   }, [])
