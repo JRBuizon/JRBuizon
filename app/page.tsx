@@ -41,7 +41,7 @@ export default function Landing() {
         method: "POST",
         headers: {
           "Accept": "application/vnd.github+json",
-          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_GITHUB_API_KEY}`,
+          "Authorization": `Bearer`,
           "X-GitHub-Api-Version": "2022-11-28"
         },
         body: JSON.stringify({
