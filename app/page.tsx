@@ -34,8 +34,8 @@ export default function Landing() {
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-3 grid gap-x-4 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
-      <div className="hidden lg:flex pr-6">
-        <div className="hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out bg-[#222] rounded-md h-[100%] w-full mx-2"></div>
+      <div className="hidden lg:flex pr-4">
+        <div className="hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out bg-[#222] rounded-md h-[100%] w-full"></div>
 
       </div>
 
