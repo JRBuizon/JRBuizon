@@ -6,31 +6,6 @@ const config: Config = {
     "./components/icons/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      keyframes: {
-        rotate: {
-          '0%': { rotate: '0deg' },
-          '100%': { rotate: '360deg' }
-        }
-      },
-
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      colors: {
-        "blu": {
-          DEFAULT: "#6499E9"
-        },
-      }
-
-    },
-    fontFamily: {
-      josefin: ["JosefinSans", "sans-serif"],
-    }
-  },
   plugins: [],
 };
 export default config;
