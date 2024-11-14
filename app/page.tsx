@@ -15,6 +15,7 @@ import ReactIcon from "@/components/icons/react";
 import TailwindIcon from "@/components/icons/tailwind";
 import Draggable from "react-draggable";
 import golaunch from "@/public/images/GoLaunchLogo.png"
+import sleeping2 from "@/public/images/sleeping2.jpg"
 
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: '400' })
 
@@ -34,13 +35,42 @@ export default function Landing() {
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-3 grid gap-x-4 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
-      <div className="hidden lg:flex pr-4">
-        <div className="hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out bg-[#222] rounded-md h-[100%] w-full"></div>
+      <div className="hidden lg:flex flex-col pr-4 pl-8 h-[100%]">
+        <div className="hover:opacity-[100%] flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md h-[100%] w-full">
+          <span className="font-bold text-sm -mb-2 leading-none">ME</span>
+          <div className="flex flex-row gap-x-2 w-full h-[10rem]">
+            <div className="relative w-[40%] h-[100%] rounded-md overflow-hidden">
+              <Image alt="sleeping2" src={sleeping2} objectFit="cover" layout="fill" objectPosition="top" />
+            </div>
+            <span className={clsx(mono.className, "w-[50%] text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
+
+          </div>
+        </div>
 
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-y-6">
-        <div className="hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out bg-[#222] rounded-md h-[100%] w-full mx-2"></div>
+      <div className="flex flex-col items-center justify-center lg:justify-between gap-y-6">
+        <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-start hover:opacity-[100%] opacity-[20%] transition-all duration-300 ease-out">
+          <span className="font-bold text-sm -mb-2 leading-none">CONTRIBUTIONS</span>
+          <div className="grid grid-flow-col grid-rows-7 gap-1 rounded-md w-fit">
+            {[{ contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            { contributionCount: 10, date: "2023-11-12" },
+            ].map(({ contributionCount, date }) => (
+              <div key={date} className={clsx("h-[8px] w-[8px] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-[#222] opacity-[100%]" : `opacity-[${10 * contributionCount}%] bg-[#6895D2]`)} />
+
+            ))}
+
+          </div>
+        </div>
 
         <div className="flex flex-col items-center justify-center">
           <span className="pointer-events-none select-none mb-1 font-bold text-[1.2rem] md:text-[1.5rem] tracking-[0.2rem] leading-none">Jeremiah Ryan Buizon</span>
@@ -91,14 +121,14 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="h-[100%] w-full" />
+        <div className="hidden lg:flex h-[100%] w-full" />
 
       </div>
 
       <div className="hidden lg:flex pl-4 flex-col gap-y-8 items-start h-[100%] justify-start">
-        <div className="flex flex-col gap-y-4 items-start justify-start grayscale hover:grayscale-0 transition-all duration-300 ease-out opacity-[20%] hover:opacity-[100%]">
-          <span className="tracking-wide uppercase leading-none text-sm -mb-2 font-bold">work</span>
-          <div className="cursor-pointer relative h-[10rem] flex flex-row gap-x-2 opacity-[100%]">
+        <div className="flex flex-col gap-y-4 items-start justify-start hover-container">
+          <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">work</span>
+          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="w-[40%] bg-white flex flex-col items-center justify-center rounded-md">
               <Image alt="work1" src={kinhub} />
             </div>
@@ -116,7 +146,7 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="cursor-pointer relative h-[10rem] flex flex-row gap-x-2 opacity-[100%]">
+          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={golaunch} objectFit="cover" width={88} height={88} />
             </div>
@@ -135,9 +165,9 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-y-4 items-start justify-start grayscale hover:grayscale-0 transition-all duration-300 ease-out opacity-[20%] hover:opacity-[100%]">
-          <span className="tracking-wide uppercase leading-none text-sm -mb-2 font-bold">side projects</span>
-          <div className="cursor-pointer relative h-[10rem] flex flex-row gap-x-2 opacity-[100%]">
+        <div className="flex flex-col gap-y-4 items-start justify-start transition-all duration-300 ease-out hover-container">
+          <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">side projects</span>
+          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={takboCover} objectFit="cover" layout="fill" />
             </div>
