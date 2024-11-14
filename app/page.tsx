@@ -16,7 +16,6 @@ import TailwindIcon from "@/components/icons/tailwind";
 import Draggable from "react-draggable";
 import golaunch from "@/public/images/GoLaunchLogo.png"
 import sleeping2 from "@/public/images/sleeping2.jpg"
-import { getGithubContributions } from "./api/github/route"
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: '400' })
@@ -36,10 +35,37 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 export default function Landing() {
   const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
   useEffect(() => {
-    async function getCon() {
-      await getGithubContributions().then((d) => setContributions(d.data?.user?.contributionsCollection?.contributionCalendar))
+    async function getGithubContributions() {
+      await fetch("https://api.github.com/graphql", {
+        cache: "force-cache",
+        method: "POST",
+        headers: {
+          "Accept": "application/vnd.github+json",
+          "Authorization": `Bearer ${process.env.GITHUB_API_KEY}`,
+          "X-GitHub-Api-Version": "2022-11-28"
+        },
+        body: JSON.stringify({
+          query: `
+              query getUser { 
+                  user(login: "JRBuizon"){
+                      contributionsCollection {
+                      contributionCalendar {
+                          totalContributions
+                          weeks {
+                          contributionDays {
+                              contributionCount
+                              date
+                          }
+                          }
+                      }
+                      }
+                  }
+              }
+              `
+        })
+      }).then((res) => res.json()).then((d) => setContributions(d.data?.user?.contributionsCollection?.contributionCalendar));
     }
-    getCon()
+    getGithubContributions()
   }, [])
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
