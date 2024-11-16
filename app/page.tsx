@@ -246,19 +246,19 @@ export default function Landing() {
             <div className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
               <div className="flex flex-row gap-x-3 items-center">
                 <Link target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className={socButtonClasses}>
-                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] ", fun ? "text-blu translate-x-[-50%]" : "text-white hover:text-blu translate-x-[0%] hover:translate-x-[-50%]")}>
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] ", fun ? "text-blu translate-x-[-50%] hover:translate-x-[0%]" : "text-white hover:text-blu translate-x-[0%] hover:translate-x-[-50%]")}>
                     <LinkedInIcon />
                     <LinkedInIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className={socButtonClasses}>
-                  <div className={clsx("transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px]", fun ? "fill-pnk translate-y-0" : "fill-white hover:fill-pnk translate-y-[-50%] hover:translate-y-[0%]")}>
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px]", fun ? "fill-pnk translate-y-0 hover:translate-y-[-50%]" : "fill-white hover:fill-pnk translate-y-[-50%] hover:translate-y-[0%]")}>
                     <GithubIcon />
                     <GithubIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://www.instagram.com/jeremiahbuizon/" className={socButtonClasses}>
-                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px]", fun ? "text-rd translate-x-0" : "text-white hover:text-rd translate-x-[-50%] hover:translate-x-[0%]")}>
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px]", fun ? "text-rd translate-x-0 hover:translate-x-[-50%]" : "text-white hover:text-rd translate-x-[-50%] hover:translate-x-[0%]")}>
                     <InstagramIcon />
                     <InstagramIcon />
                   </div>
