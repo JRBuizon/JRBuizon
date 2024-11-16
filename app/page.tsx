@@ -42,15 +42,25 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 
 export default function Landing() {
   const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false)
   useEffect(() => {
     async function getGithubContributions() {
-      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github").then((res) => res.json()).then((d) => { setContributions(d.data?.data?.user?.contributionsCollection?.contributionCalendar); console.log(d.data?.data?.user?.contributionsCollection?.contributionCalendar) });
+      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github")
+        .then((res) => res.json())
+        .then((d) => {
+          setContributions(d.data?.data?.user?.contributionsCollection?.contributionCalendar);
+          setLoading(false);
+        });
     }
     getGithubContributions()
   }, [])
+
   const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
+      {/* <div className={clsx("transition-all duration-[2s] ease-in-out absolute flex flex-col justify-center items-center w-full h-[100%] z-[99999999] bg-[#fff]", !loading && loadingAnimation && "translate-x-[100%]")}>
+      </div> */}
       <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
         <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md w-full">
           <span className="font-bold text-sm -mb-2 leading-none">INFO</span>
@@ -70,11 +80,11 @@ export default function Landing() {
         <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-[100%] thinkpad-container justify-center items-center">
           <div className="absolute top-4 left-0">
             <span className={clsx("leading-none font-bold tracking-wide")}>
-              MY SETUP
+              CURRENT SPECS
             </span>
             <hr className="w-full border border-solid border-white border-b-0" />
           </div>
-          <div className="relative w-full h-[100%] opacity-[50%] transition-ease-out hover-opacity">
+          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full items-center flex justify-center opacity-[50%] transition-ease-out hover-opacity">
             <IsometricGrid />
           </div>
           <div className="hover-thinkpad-part delay-[140ms] battery translate-x-[-20%] translate-y-[-100%]">
@@ -178,10 +188,6 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* <div className="absolute bottom-0 left-6 thinkpad-container w-[28rem] justify-center items-center h-[32rem]">
-        <IsometricGrid />
-      </div> */}
-
       <div className="lg:col-span-4 flex flex-col items-center justify-center lg:justify-between gap-y-6 px-2">
         <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className="hidden lg:flex h-[100%] ">
           <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-center hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
@@ -269,7 +275,7 @@ export default function Landing() {
       <div className="col-span-3 hidden lg:flex flex-col gap-y-8 items-start h-[100%] justify-start">
         <div className="flex flex-col gap-y-4 items-start justify-start hover-container">
           <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">work</span>
-          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <Link href="https://kinhub.com" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="w-[40%] bg-white flex flex-col items-center justify-center rounded-md">
               <Image alt="work1" src={kinhub} />
             </div>
@@ -285,9 +291,9 @@ export default function Landing() {
                 Mental health and well-being B2B PaaS based in the UK.
               </span>
             </div>
-          </div>
+          </Link>
 
-          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <Link href="/" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={golaunch} objectFit="cover" width={88} height={88} />
             </div>
@@ -303,12 +309,12 @@ export default function Landing() {
                 Design & Engineering studio for launching early-stage brands and digital products. We&apos;ve collaborated with companies in Spain, Singapore, and the Philippines.
               </span>
             </div>
-          </div>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-y-4 items-start justify-start transition-all duration-300 ease-out hover-container">
           <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">side projects</span>
-          <div className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <Link href="https://stells.design/takbo" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={takboCover} objectFit="cover" layout="fill" />
             </div>
@@ -324,7 +330,7 @@ export default function Landing() {
                 A side-scroller web game designed and developed in a week using the Godot engine. Collaboration with Stella Pangilinan and Ramon Catane.
               </span>
             </div>
-          </div>
+          </Link>
         </div>
 
       </div>
