@@ -44,10 +44,10 @@ export default function GoLaunchPage() {
                 </div>
                 <div className="flex flex-row items-center">
                     <div className="w-[6rem] h-[100%] relative overflow-hidden">
-                        <span className={clsx("transition-all delay-[2400ms] ease-[cubic-bezier(.24,.31,.23,1)] duration-[800ms] absolute text-6xl font-bold tracking-wider translate-x-[100%] top-0 left-0", animation1 && "translate-x-0")}>GO</span>
+                        <span className={clsx("transition-all delay-[2400ms] ease-[cubic-bezier(.24,.31,.23,1)] duration-[800ms] absolute text-6xl font-bold tracking-wider top-0 left-0", animation1 ? "translate-x-0" : "translate-x-[100%]")}>GO</span>
                     </div>
                     <div className="w-[16rem] h-[100%] relative overflow-hidden">
-                        <span className={clsx("transition-all delay-[2400ms] ease-[cubic-bezier(.24,.31,.23,1)] duration-[800ms] absolute text-6xl font-bold tracking-wider translate-x-[-100%] top-0 left-0", animation1 && "translate-x-0")}>LAUNCH</span>
+                        <span className={clsx("transition-all delay-[2400ms] ease-[cubic-bezier(.24,.31,.23,1)] duration-[800ms] absolute text-6xl font-bold tracking-wider top-0 left-0", animation1 ? "translate-x-0" : "translate-x-[-100%]")}>LAUNCH</span>
                     </div>
                     <span className="opacity-0 text-6xl w-0">LAUNCH</span>
 
