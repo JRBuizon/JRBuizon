@@ -44,6 +44,7 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 export default function Landing() {
   const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [fun, setFun] = useState<boolean>(false)
   const [grabbing, setGrabbing] = useState<boolean>(false)
   const router = useRouter()
   useEffect(() => {
@@ -61,14 +62,14 @@ export default function Landing() {
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
       <div className={clsx("transition-all duration-[2s] ease-in-out absolute flex flex-col justify-center items-center w-full h-[100%] z-[99999999] bg-[#fff]", !loading && "translate-x-[-100%]")} />
       <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
-        <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md w-full">
+        <div className={clsx("flex flex-col gap-y-4 transition-ease-out rounded-md w-full", fun ? "opacity-[100%] grayscale-0" : "hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0")}>
           <span className="font-bold text-sm -mb-2 leading-none">INFO</span>
           <div className="flex flex-row gap-x-2 w-full h-[10rem]">
             <div className="relative w-[40%] h-[100%] rounded-md overflow-hidden">
               <Image alt="sleeping2" src={sleeping2} objectFit="cover" layout="fill" objectPosition="top" />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
-              <span className={clsx("leading-none font-bold tracking-wide")}>
+              <span className={clsx("leading-none font-bold tracking-wide", fun && "text-blu")}>
                 ABOUT ME
               </span>
               <hr className="w-full border border-solid border-white border-b-0" />
@@ -76,20 +77,20 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-[100%] thinkpad-container justify-center items-center">
+        <div className={clsx("thinkpad-container hover-container transition-ease-out relative flex flex-col w-full h-[100%] thinkpad-container justify-center items-center", fun ? "opacity-[100%]" : "opacity-[50%] hover:opacity-[100%]")}>
           <div className="absolute top-4 left-0">
             <span className={clsx("leading-none font-bold tracking-wide")}>
               CURRENT SPECS
             </span>
             <hr className="w-full border border-solid border-white border-b-0" />
           </div>
-          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full items-center flex justify-center opacity-[50%] transition-ease-out hover-opacity">
+          <div className={clsx("absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full items-center flex justify-center transition-ease-out hover-opacity", fun ? "opacity-[100%]" : "opacity-[50%]")}>
             <IsometricGrid />
           </div>
-          <div className="hover-thinkpad-part delay-[140ms] battery translate-x-[-20%] translate-y-[-100%]">
-            <BatterySVG className="fill-white hover:fill-rd hover:scale-[125%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part delay-[140ms] translate-x-[-20%] translate-y-[-100%]", fun ? "battery-fun" : "battery")}>
+            <BatterySVG className={clsx("hover:scale-[125%] transition-ease-out", fun ? "fill-rd" : "fill-white hover:fill-rd")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[124px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-x-[30%] translate-y-[-150%]">
+              <div className={clsx("transition-ease-out w-[124px] absolute text-xs translate-x-[30%] translate-y-[-150%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold">
                   BATTERY
                 </span>
@@ -100,10 +101,10 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div className="hover-thinkpad-part delay-[70ms] ssd translate-x-[-250%] translate-y-[-0%]">
-            <SSDSVG className="fill-white hover:fill-pnk hover:scale-[150%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part delay-[70ms] translate-x-[-250%] translate-y-[-0%]", fun ? "ssd-fun" : "ssd")}>
+            <SSDSVG className={clsx(" hover:scale-[150%] transition-ease-out", fun ? "fill-pnk" : "fill-white hover:fill-pnk")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-x-[-130%] translate-y-[-70%]">
+              <div className={clsx("transition-ease-out absolute text-xs translate-x-[-130%] translate-y-[-70%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold text-nowrap">
                   SSD <span className="text-[8px]">(STORAGE)</span>
                 </span>
@@ -114,10 +115,10 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div className="hover-thinkpad-part delay-[210ms] heatsink translate-x-[-15%] translate-y-[-35%]">
-            <HeatsinkSVG className="fill-white hover:fill-pnk hover:scale-[125%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part delay-[210ms] translate-x-[-15%] translate-y-[-35%]", fun ? "heatsink-fun" : "heatsink")}>
+            <HeatsinkSVG className={clsx("hover:scale-[125%] transition-ease-out", fun ? "fill-pnk" : "fill-white hover:fill-pnk")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[148px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[30%]">
+              <div className={clsx("transition-ease-out w-[148px] absolute text-xs translate-y-[30%] translate-x-[10%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold">
                   HEATSINK
                 </span>
@@ -128,10 +129,10 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div className="hover-thinkpad-part delay-[280ms] ram translate-x-[-80%] translate-y-[-30%]">
-            <RAMSVG className="fill-white hover:fill-rd hover:scale-[150%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part delay-[280ms] translate-x-[-80%] translate-y-[-30%]", fun ? "ram-fun" : "ram")}>
+            <RAMSVG className={clsx("hover:scale-[150%] transition-ease-out", fun ? "fill-rd" : "fill-white hover:fill-rd")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-20%]">
+              <div className={clsx("transition-ease-out w-[96px] absolute text-xs translate-y-[20%] translate-x-[-20%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold">
                   RAM
                 </span>
@@ -143,9 +144,9 @@ export default function Landing() {
             </div>
           </div>
           <div className="hover-thinkpad-part absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
-            <ThinkpadSVG className="fill-white hover:fill-blu transition-ease-out" />
+            <ThinkpadSVG className={clsx("transition-ease-out", fun ? "fill-blu" : "fill-white hover:fill-blu")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[-420%] ">
+              <div className={clsx("transition-ease-out w-[96px] absolute text-xs translate-y-[-420%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold text-nowrap" >
                   THINKPAD T480
                 </span>
@@ -156,10 +157,10 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div className="hover-thinkpad-part trackpad translate-x-[-110%] translate-y-[-35%]">
-            <TrackPadSVG className="fill-white hover:fill-rd hover:scale-[150%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part translate-x-[-110%] translate-y-[-35%]", fun ? "trackpad-fun" : "trackpad")}>
+            <TrackPadSVG className={clsx("hover:scale-[150%] transition-ease-out", fun ? "fill-rd" : "fill-white hover:fill-rd")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-80%]">
+              <div className={clsx("transition-ease-out w-[96px] absolute text-xs translate-y-[20%] translate-x-[-80%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold">
                   TRACKPAD
                 </span>
@@ -170,10 +171,10 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div className="hover-thinkpad-part delay-[140ms] keyboard translate-x-[-45%] translate-y-[-55%]">
-            <KeyboardSVG className="fill-white hover:fill-rd hover:scale-[120%] transition-ease-out" />
+          <div className={clsx("hover-thinkpad-part delay-[140ms] translate-x-[-45%] translate-y-[-55%]", fun ? "keyboard-fun" : "keyboard")}>
+            <KeyboardSVG className={clsx("hover:scale-[120%] transition-ease-out", fun ? "fill-rd" : "fill-white hover:fill-rd")} />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[-250%] translate-x-[-70%]">
+              <div className={clsx("transition-ease-out w-[96px] absolute text-xs translate-y-[-250%] translate-x-[-70%]", !fun && "opacity-[0%] hover-thinkpad-part-opacity")}>
                 <span className="font-bold">
                   KEYBOARD
                 </span>
@@ -188,8 +189,8 @@ export default function Landing() {
       </div>
 
       <div className="lg:col-span-4 flex flex-col items-center justify-center lg:justify-between gap-y-6 px-2">
-        <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className="hidden lg:flex h-[100%] ">
-          <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-center hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
+        <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className="hidden lg:flex h-[100%]">
+          <div className={clsx("flex w-full h-[100%] gap-y-4 flex-col justify-start items-center transition-ease-out", fun ? "opacity-[100%] grayscale-0" : "hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0")}>
             <span className="font-bold text-sm -mb-3 leading-none h-0">CONTRIBUTIONS</span>
             <div className="flex flex-row items-center justify-between w-full gap-x-1">
               <span className="text-xs w-fit">{months[new Date().getMonth()]} ({new Date().getFullYear() - 1})</span>
@@ -200,7 +201,7 @@ export default function Landing() {
                 contributions?.weeks.map(({ contributionDays }) => {
                   return (contributionDays.map(({ contributionCount, date }) => {
                     return (
-                      <div key={date} className={clsx("h-[0.47vw] w-[0.47vw] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-transparent" : contributionCount > 0 && contributionCount < 6 ? "opacity-[30%] bg-blu" : contributionCount > 6 && contributionCount < 12 ? "opacity-[60%] bg-blu" : contributionCount > 12 && contributionCount < 24 ? "opacity-[80%] bg-blu" : "opacity-[100%] brightness-[150%] bg-blu")} />
+                      <div key={date} className={clsx("h-[0.47vw] w-[0.47vw] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-transparent" : contributionCount > 0 && contributionCount < 6 ? "opacity-[30%] bg-blu" : contributionCount > 6 && contributionCount < 12 && !fun ? "opacity-[60%] bg-blu" : contributionCount > 6 && contributionCount < 12 && fun ? "opacity-[60%] bg-pnk" : contributionCount > 12 && contributionCount < 24 && !fun ? "opacity-[80%] bg-blu" : contributionCount > 12 && contributionCount < 24 && fun ? "opacity-[80%] bg-rd" : fun ? "opacity-[100%] brightness-[150%] bg-rd" : "opacity-[100%] brightness-[150%] bg-blu")} />
                     )
                   }))
                 })}
@@ -210,9 +211,9 @@ export default function Landing() {
               <span className="text-xs w-fit">less</span>
               <div className="h-[7px] w-[7px] rounded-sm bg-[#222]" />
               <div className="h-[7px] w-[7px] rounded-sm opacity-[30%] bg-blu" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[60%] bg-blu" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[80%] bg-blu" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[100%] brightness-[150%] bg-blu" />
+              <div className={clsx("h-[7px] w-[7px] rounded-sm opacity-[60%]", fun ? "bg-pnk" : "bg-blu")} />
+              <div className={clsx("h-[7px] w-[7px] rounded-sm opacity-[80%]", fun ? "bg-rd" : "bg-blu")} />
+              <div className={clsx("h-[7px] w-[7px] rounded-sm opacity-[100%] brightness-[150%]", fun ? "bg-rd" : "bg-blu")} />
               <span className="text-xs w-fit">more</span>
             </div>
           </div>
@@ -245,19 +246,19 @@ export default function Landing() {
             <div className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
               <div className="flex flex-row gap-x-3 items-center">
                 <Link target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className={socButtonClasses}>
-                  <div className="text-white hover:text-blu transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[0%] hover:translate-x-[-50%]">
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] ", fun ? "text-blu translate-x-[-50%]" : "text-white hover:text-blu translate-x-[0%] hover:translate-x-[-50%]")}>
                     <LinkedInIcon />
                     <LinkedInIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className={socButtonClasses}>
-                  <div className="fill-white hover:fill-pnk transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px]", fun ? "fill-pnk translate-y-0" : "fill-white hover:fill-pnk translate-y-[-50%] hover:translate-y-[0%]")}>
                     <GithubIcon />
                     <GithubIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://www.instagram.com/jeremiahbuizon/" className={socButtonClasses}>
-                  <div className="text-white hover:text-rd transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[-50%] hover:translate-x-[0%]">
+                  <div className={clsx("transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px]", fun ? "text-rd translate-x-0" : "text-white hover:text-rd translate-x-[-50%] hover:translate-x-[0%]")}>
                     <InstagramIcon />
                     <InstagramIcon />
                   </div>
@@ -267,19 +268,22 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="hidden lg:flex h-[100%] w-full" />
+        <div className="hidden lg:flex h-[100%] w-full flex-row justify-center gap-2 items-center">
+          <span>the fun button -&gt;</span>
+          <button onClick={() => setFun(!fun)} type="button" className={clsx("transition-ease-out rounded-full h-[24px] w-[40px] px-[4px] py-[3px] bg-[#111] border border-solid border-white", fun && "bg-pnk ")}><div className={clsx("rounded-full h-[16px] w-[16px] bg-[#fff] transition-ease-out", fun && "ml-[16px]")} /></button>
+        </div>
 
       </div>
 
       <div className="col-span-3 hidden lg:flex flex-col gap-y-8 items-start h-[100%] justify-start">
         <div className="flex flex-col gap-y-4 items-start justify-start hover-container">
-          <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">work</span>
-          <Link href="https://kinhub.com" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <span className={clsx("transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold ", fun ? "opacity-[100%]" : "opacity-[20%] hover-opacity")}>work</span>
+          <Link href="https://kinhub.com" target="_blank" className={clsx("transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2", fun ? "grayscale-0 opacity-[100%]" : "grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]")}>
             <div className="w-[40%] bg-white flex flex-col items-center justify-center rounded-md">
               <Image alt="work1" src={kinhub} />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
-              <span className={clsx("leading-none font-bold tracking-wide")}>
+              <span className={clsx("leading-none font-bold tracking-wide", fun && "text-blu")}>
                 KINHUB <span className="text-xs leading-none">(2023 - present)</span>
               </span>
               <span className={clsx("leading-tight tracking-wide")}>
@@ -296,12 +300,12 @@ export default function Landing() {
             e.preventDefault()
             setLoading(true);
             setTimeout(() => router.push("/golaunch"), 2000)
-          }} href="/golaunch" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          }} href="/golaunch" className={clsx("transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2", fun ? "grayscale-0 opacity-[100%]" : "grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]")}>
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={golaunch} objectFit="cover" width={88} height={88} />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
-              <span className={clsx("leading-none font-bold tracking-wide")}>
+              <span className={clsx("leading-none font-bold tracking-wide", fun && "text-rd")}>
                 GOLAUNCH <span className="text-xs leading-none">(2024)</span>
               </span>
               <span className={clsx("leading-none tracking-wide")}>
@@ -316,13 +320,13 @@ export default function Landing() {
         </div>
 
         <div className="flex flex-col gap-y-4 items-start justify-start transition-all duration-300 ease-out hover-container">
-          <span className="transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold opacity-[20%] hover-opacity">side projects</span>
-          <Link href="https://stells.design/takbo" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <span className={clsx("transition-ease-out tracking-wide uppercase leading-none text-sm -mb-2 font-bold ", fun ? "opacity-[100%]" : "opacity-[20%] hover-opacity")}>side projects</span>
+          <Link href="https://stells.design/takbo" target="_blank" className={clsx("transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2", fun ? "grayscale-0 opacity-[100%]" : "grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]")}>
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={takboCover} objectFit="cover" layout="fill" />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
-              <span className={clsx("uppercase font-bold leading-none tracking-wide")}>
+              <span className={clsx("uppercase font-bold leading-none tracking-wide", fun && "text-pnk")}>
                 TAKBO <span className="text-xs leading-none">(2022)</span>
               </span>
               <span className={clsx("leading-none tracking-wide")}>

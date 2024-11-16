@@ -46,10 +46,14 @@ html {
 
 
 .transition-ease-out {
-  @apply transition-all duration-300 ease-out
+  @apply transition-all duration-[400ms] ease-out
 }
 
 .thinkpad-container:hover .trackpad {
+  @apply translate-x-[-360%] translate-y-[220%]
+}
+
+.trackpad-fun {
   @apply translate-x-[-360%] translate-y-[220%]
 }
 
@@ -57,7 +61,15 @@ html {
   @apply translate-x-[-175%] translate-y-[-175%]
 }
 
+.keyboard-fun {
+  @apply translate-x-[-175%] translate-y-[-175%]
+}
+
 .thinkpad-container:hover .ram {
+  @apply translate-y-[400%]
+}
+
+.ram-fun {
   @apply translate-y-[400%]
 }
 
@@ -65,10 +77,22 @@ html {
   @apply translate-x-[125%] translate-y-[-240%]
 }
 
+.battery-fun {
+  @apply translate-x-[125%] translate-y-[-240%]
+}
+
 .thinkpad-container:hover .ssd {
   @apply translate-x-[-650%] translate-y-[-400%] z-[999]
 }
 
+.ssd-fun {
+  @apply translate-x-[-650%] translate-y-[-400%] z-[999]
+}
+
 .thinkpad-container:hover .heatsink {
+  @apply translate-x-[175%] translate-y-[130%]
+}
+
+.heatsink-fun {
   @apply translate-x-[175%] translate-y-[130%]
 }
