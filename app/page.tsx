@@ -24,6 +24,7 @@ import BatterySVG from "@/components/icons/battery";
 import HeatsinkSVG from "@/components/icons/heatsink";
 import SSDSVG from "@/components/icons/ssd";
 import RAMSVG from "@/components/icons/ram";
+import { useRouter } from "next/navigation";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: '400' })
@@ -43,10 +44,11 @@ function DraggableObject({ children, className, setGrabbing, grabbing }: { child
 export default function Landing() {
   const [contributions, setContributions] = useState<{ totalContributions: number, weeks: { contributionDays: { contributionCount: number, date: string }[] }[] }>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false)
+  const [grabbing, setGrabbing] = useState<boolean>(false)
+  const router = useRouter()
   useEffect(() => {
     async function getGithubContributions() {
-      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github")
+      await fetch("https://nodejs-serverless-function-express-roan-nu.vercel.app/api/github", { cache: "force-cache" })
         .then((res) => res.json())
         .then((d) => {
           setContributions(d.data?.data?.user?.contributionsCollection?.contributionCalendar);
@@ -55,12 +57,9 @@ export default function Landing() {
     }
     getGithubContributions()
   }, [])
-
-  const [grabbing, setGrabbing] = useState<boolean>(false)
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
-      {/* <div className={clsx("transition-all duration-[2s] ease-in-out absolute flex flex-col justify-center items-center w-full h-[100%] z-[99999999] bg-[#fff]", !loading && loadingAnimation && "translate-x-[100%]")}>
-      </div> */}
+      <div className={clsx("transition-all duration-[2s] ease-in-out absolute flex flex-col justify-center items-center w-full h-[100%] z-[99999999] bg-[#fff]", !loading && "translate-x-[-100%]")} />
       <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
         <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md w-full">
           <span className="font-bold text-sm -mb-2 leading-none">INFO</span>
@@ -293,13 +292,17 @@ export default function Landing() {
             </div>
           </Link>
 
-          <Link href="/" target="_blank" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
+          <Link onClick={(e) => {
+            e.preventDefault()
+            setLoading(true);
+            setTimeout(() => router.push("/golaunch"), 2000)
+          }} href="/golaunch" className="transition-ease-out cursor-pointer relative h-[10rem] flex flex-row gap-x-2 grayscale hover:grayscale-0 opacity-[20%] hover:opacity-[100%]">
             <div className="relative overflow-hidden w-[40%] bg-black flex flex-col items-center justify-center rounded-md">
               <Image alt="work2" src={golaunch} objectFit="cover" width={88} height={88} />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
               <span className={clsx("leading-none font-bold tracking-wide")}>
-                GOLAUNCH <span className="text-xs leading-none">(2024 - present)</span>
+                GOLAUNCH <span className="text-xs leading-none">(2024)</span>
               </span>
               <span className={clsx("leading-none tracking-wide")}>
                 Co-Founder
