@@ -11,6 +11,7 @@ module.exports = {
         blu: "#6895D2",
         ylow: "#FDE767",
         rd: "#D04848",
+        pnk: "#FF69B4"
       }
     },
   },

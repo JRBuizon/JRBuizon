@@ -68,6 +68,12 @@ export default function Landing() {
           </div>
         </div>
         <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-[100%] thinkpad-container justify-center items-center">
+          <div className="absolute top-4 left-0">
+            <span className={clsx("leading-none font-bold tracking-wide")}>
+              MY SETUP
+            </span>
+            <hr className="w-full border border-solid border-white border-b-0" />
+          </div>
           <div className="relative w-full h-[100%] opacity-[50%] transition-ease-out hover-opacity">
             <IsometricGrid />
           </div>
@@ -78,7 +84,7 @@ export default function Landing() {
                 <span className="font-bold">
                   BATTERY
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span>
                   48 Wh external // 24 Wh internal
                 </span>
@@ -86,13 +92,13 @@ export default function Landing() {
             </div>
           </div>
           <div className="hover-thinkpad-part delay-[70ms] ssd translate-x-[-250%] translate-y-[-0%]">
-            <SSDSVG className="fill-white hover:fill-ylow hover:scale-[150%] transition-ease-out" />
+            <SSDSVG className="fill-white hover:fill-pnk hover:scale-[150%] transition-ease-out" />
             <div className="relative pointer-events-none">
               <div className="transition-ease-out opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-x-[-130%] translate-y-[-70%]">
                 <span className="font-bold text-nowrap">
                   SSD <span className="text-[8px]">(STORAGE)</span>
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span className="text-nowrap">
                   512GB SSD
                 </span>
@@ -100,13 +106,13 @@ export default function Landing() {
             </div>
           </div>
           <div className="hover-thinkpad-part delay-[210ms] heatsink translate-x-[-15%] translate-y-[-35%]">
-            <HeatsinkSVG className="fill-white hover:fill-ylow hover:scale-[125%] transition-ease-out" />
+            <HeatsinkSVG className="fill-white hover:fill-pnk hover:scale-[125%] transition-ease-out" />
             <div className="relative pointer-events-none">
               <div className="transition-ease-out w-[148px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[30%]">
                 <span className="font-bold">
                   HEATSINK
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span>
                   Large heatsink // Grizzly thermal paste
                 </span>
@@ -120,24 +126,35 @@ export default function Landing() {
                 <span className="font-bold">
                   RAM
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span>
                   8GB (1 stick) SODIMM DDR4
                 </span>
               </div>
             </div>
           </div>
-          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
-            <ThinkpadSVG />
+          <div className="hover-thinkpad-part absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <ThinkpadSVG className="fill-white hover:fill-blu transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[-420%] ">
+                <span className="font-bold text-nowrap" >
+                  THINKPAD T480
+                </span>
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
+                <span className="text-nowrap">
+                  CPU: i7-8550U
+                </span>
+              </div>
+            </div>
           </div>
           <div className="hover-thinkpad-part trackpad translate-x-[-110%] translate-y-[-35%]">
             <TrackPadSVG className="fill-white hover:fill-rd hover:scale-[150%] transition-ease-out" />
             <div className="relative pointer-events-none">
-              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-100%]">
+              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-80%]">
                 <span className="font-bold">
                   TRACKPAD
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span className="text-nowrap">
                   Regular trackpad
                 </span>
@@ -151,7 +168,7 @@ export default function Landing() {
                 <span className="font-bold">
                   KEYBOARD
                 </span>
-                <hr className="mb-1 border border-solid border-b-0" />
+                <hr className="mb-1 border border-solid border-b-0 w-full" />
                 <span className="text-nowrap">
                   Regular keyboard
                 </span>
@@ -198,8 +215,8 @@ export default function Landing() {
 
         <div className="flex flex-col items-center justify-center">
           <span className="pointer-events-none select-none mb-1 font-bold text-[1.2rem] md:text-[1.5rem] tracking-[0.2rem] leading-none">Jeremiah Ryan Buizon</span>
-          <span className="pointer-events-none select-none relative justify-center text-nowrap uppercase font-bold flex bg-gradient-to-r items-center from-10% to-90% from-blu via-[#FF69B4] to-rd bg-clip-text text-[1.5rem] md:text-[2rem] text-transparent text-center select-auto">
-            <span className="pointer-events-none select-none font-bold absolute text-nowrap uppercase top-0 flex bg-gradient-to-r blur-md tracking-[0.15rem] from-10% to-90% from-blu via-[#FF69B4] to-rd bg-clip-text text-[1.6rem] md:text-[2.1rem] box-content text-transparent text-center select-none">Front-end Developer</span>
+          <span className="pointer-events-none select-none relative justify-center text-nowrap uppercase font-bold flex bg-gradient-to-r items-center from-10% to-90% from-blu via-pnk to-rd bg-clip-text text-[1.5rem] md:text-[2rem] text-transparent text-center select-auto">
+            <span className="pointer-events-none select-none font-bold absolute text-nowrap uppercase top-0 flex bg-gradient-to-r blur-md tracking-[0.15rem] from-10% to-90% from-blu via-pnk to-rd bg-clip-text text-[1.6rem] md:text-[2.1rem] box-content text-transparent text-center select-none">Front-end Developer</span>
             Front-end Developer
           </span>
           <div className="pointer-events-none select-none flex flex-row items-center gap-x-1">
@@ -229,7 +246,7 @@ export default function Landing() {
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className={socButtonClasses}>
-                  <div className="fill-white hover:fill-[#FF69B4] transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
+                  <div className="fill-white hover:fill-pnk transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
                     <GithubIcon />
                     <GithubIcon />
                   </div>

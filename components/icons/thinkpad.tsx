@@ -1,4 +1,4 @@
-export default function ThinkpadSVG() {
+export default function ThinkpadSVG({ className }: { className?: string }) {
   return (
     <svg
       width="25.398199mm"
@@ -6,11 +6,12 @@ export default function ThinkpadSVG() {
       viewBox="0 0 25.398199 28.161556"
       version="1.1"
       id="svg1"
+      className={className}
     >
       <defs
         id="defs1" />
       <path
-        fill="#fff" stroke="none" strokeWidth={0}
+        fill="#inherit" stroke="none" strokeWidth={0}
         d="M 0.26457992,19.047564 10.49475,13.099474 10.46914,0.85188464 l 0.929926,-0.5873 2.880201,1.69678996 -1.915356,1.86891 0.03125,8.1353294 9.905632,5.70988 0.04142,-7.9256094 -10.100134,-5.8727 2.035294,-1.92541 10.856265,6.26199 -0.8331,0.553 -0.0271,11.8168694 -10.654469,6.24528 -0.01277,1.06492 -13.32591408,-7.61058 z"
         id="path11" />
       <path
