@@ -67,30 +67,96 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-fit thinkpad-container justify-center items-center">
+        <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-[100%] thinkpad-container justify-center items-center">
           <div className="relative w-full h-[100%] opacity-[50%] transition-ease-out hover-opacity">
             <IsometricGrid />
           </div>
-          <div className="transition-ease-out delay-[140ms] battery absolute top-[50%] left-[50%] translate-x-[-20%] translate-y-[-100%]">
-            <BatterySVG />
+          <div className="hover-thinkpad-part delay-[140ms] battery translate-x-[-20%] translate-y-[-100%]">
+            <BatterySVG className="fill-white hover:fill-rd hover:scale-[125%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[124px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-x-[30%] translate-y-[-150%]">
+                <span className="font-bold">
+                  BATTERY
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span>
+                  48 Wh external // 24 Wh internal
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="transition-ease-out delay-[70ms] ssd absolute top-[50%] left-[50%] translate-x-[-250%] translate-y-[-0%]">
-            <SSDSVG />
+          <div className="hover-thinkpad-part delay-[70ms] ssd translate-x-[-250%] translate-y-[-0%]">
+            <SSDSVG className="fill-white hover:fill-ylow hover:scale-[150%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-x-[-130%] translate-y-[-70%]">
+                <span className="font-bold text-nowrap">
+                  SSD <span className="text-[8px]">(STORAGE)</span>
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span className="text-nowrap">
+                  512GB SSD
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="transition-ease-out delay-[210ms] heatsink absolute top-[50%] left-[50%] translate-x-[-15%] translate-y-[-35%]">
-            <HeatsinkSVG />
+          <div className="hover-thinkpad-part delay-[210ms] heatsink translate-x-[-15%] translate-y-[-35%]">
+            <HeatsinkSVG className="fill-white hover:fill-ylow hover:scale-[125%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[148px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[30%]">
+                <span className="font-bold">
+                  HEATSINK
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span>
+                  Large heatsink // Grizzly thermal paste
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="transition-ease-out delay-[280ms] ram absolute top-[50%] left-[50%] translate-x-[-80%] translate-y-[-30%]">
-            <RAMSVG />
+          <div className="hover-thinkpad-part delay-[280ms] ram translate-x-[-80%] translate-y-[-30%]">
+            <RAMSVG className="fill-white hover:fill-rd hover:scale-[150%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-20%]">
+                <span className="font-bold">
+                  RAM
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span>
+                  8GB (1 stick) SODIMM DDR4
+                </span>
+              </div>
+            </div>
           </div>
           <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
             <ThinkpadSVG />
           </div>
-          <div className="transition-ease-out trackpad absolute top-[50%] left-[50%] translate-x-[-110%] translate-y-[-35%]">
-            <TrackPadSVG />
+          <div className="hover-thinkpad-part trackpad translate-x-[-110%] translate-y-[-35%]">
+            <TrackPadSVG className="fill-white hover:fill-rd hover:scale-[150%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[20%] translate-x-[-100%]">
+                <span className="font-bold">
+                  TRACKPAD
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span className="text-nowrap">
+                  Regular trackpad
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="transition-ease-out delay-[140ms] keyboard absolute top-[50%] left-[50%] translate-x-[-45%] translate-y-[-55%]">
-            <KeyboardSVG />
+          <div className="hover-thinkpad-part delay-[140ms] keyboard translate-x-[-45%] translate-y-[-55%]">
+            <KeyboardSVG className="fill-white hover:fill-rd hover:scale-[120%] transition-ease-out" />
+            <div className="relative pointer-events-none">
+              <div className="transition-ease-out w-[96px] opacity-[0%] hover-thinkpad-part-opacity absolute text-xs translate-y-[-250%] translate-x-[-70%]">
+                <span className="font-bold">
+                  KEYBOARD
+                </span>
+                <hr className="mb-1 border border-solid border-b-0" />
+                <span className="text-nowrap">
+                  Regular keyboard
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

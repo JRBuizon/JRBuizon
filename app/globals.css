@@ -36,6 +36,15 @@ html {
   @apply opacity-[100%]
 }
 
+.hover-thinkpad-part {
+  @apply cursor-help transition-ease-out absolute top-[50%] left-[50%]
+}
+
+.hover-thinkpad-part:hover .hover-thinkpad-part-opacity {
+  @apply opacity-[100%]
+}
+
+
 .transition-ease-out {
   @apply transition-all duration-300 ease-out
 }
@@ -57,7 +66,7 @@ html {
 }
 
 .thinkpad-container:hover .ssd {
-  @apply translate-x-[-650%] translate-y-[-400%]
+  @apply translate-x-[-650%] translate-y-[-400%] z-[999]
 }
 
 .thinkpad-container:hover .heatsink {
