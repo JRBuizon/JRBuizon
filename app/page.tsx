@@ -16,6 +16,14 @@ import TailwindIcon from "@/components/icons/tailwind";
 import Draggable from "react-draggable";
 import golaunch from "@/public/images/GoLaunchLogo.png"
 import sleeping2 from "@/public/images/sleeping2.jpg"
+import IsometricGrid from "@/components/icons/grid";
+import ThinkpadSVG from "@/components/icons/thinkpad";
+import KeyboardSVG from "@/components/icons/keyboard";
+import TrackPadSVG from "@/components/icons/trackpad";
+import BatterySVG from "@/components/icons/battery";
+import HeatsinkSVG from "@/components/icons/heatsink";
+import SSDSVG from "@/components/icons/ssd";
+import RAMSVG from "@/components/icons/ram";
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: '400' })
@@ -44,22 +52,50 @@ export default function Landing() {
   return (
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
       <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
-        <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md h-[100%] w-full">
+        <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md w-full">
           <span className="font-bold text-sm -mb-2 leading-none">ME</span>
           <div className="flex flex-row gap-x-2 w-full h-[10rem]">
             <div className="relative w-[40%] h-[100%] rounded-md overflow-hidden">
               <Image alt="sleeping2" src={sleeping2} objectFit="cover" layout="fill" objectPosition="top" />
             </div>
             <span className={clsx(mono.className, "w-[50%] text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
-
           </div>
         </div>
-
+        <div className="thinkpad-container hover-container relative flex flex-col w-full h-fit thinkpad-container justify-center items-center">
+          <div className="relative w-full h-[100%] opacity-[20%] transition-ease-out hover-opacity">
+            <IsometricGrid />
+          </div>
+          <div className="transition-ease-out delay-[140ms] battery absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <BatterySVG />
+          </div>
+          <div className="transition-ease-out delay-[210ms] heatsink absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <HeatsinkSVG />
+          </div>
+          <div className="transition-ease-out delay-[70ms] ssd absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <SSDSVG />
+          </div>
+          <div className="transition-ease-out delay-[280ms] ram absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <RAMSVG />
+          </div>
+          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <ThinkpadSVG />
+          </div>
+          <div className="transition-ease-out trackpad absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <TrackPadSVG />
+          </div>
+          <div className="transition-ease-out delay-[140ms] keyboard absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+            <KeyboardSVG />
+          </div>
+        </div>
       </div>
+
+      {/* <div className="absolute bottom-0 left-6 thinkpad-container w-[28rem] justify-center items-center h-[32rem]">
+        <IsometricGrid />
+      </div> */}
 
       <div className="lg:col-span-4 flex flex-col items-center justify-center lg:justify-between gap-y-6 px-2">
         <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className="hidden lg:flex h-[100%] ">
-          <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-center items-center hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
+          <div className="hidden lg:flex w-full h-[100%] gap-y-4 flex-col justify-start items-center hover:opacity-[100%] opacity-[20%] grayscale hover:grayscale-0 transition-all duration-300 ease-out">
             <span className="font-bold text-sm -mb-3 leading-none h-0">CONTRIBUTIONS</span>
             <div className="flex flex-row items-center justify-between w-full gap-x-1">
               <span className="text-xs w-fit">{months[new Date().getMonth()]} ({new Date().getFullYear() - 1})</span>
@@ -74,8 +110,8 @@ export default function Landing() {
                     )
                   }))
                 })}
-
             </div>
+
             <div className="flex flex-row items-center justify-center w-full gap-x-1">
               <span className="text-xs w-fit">less</span>
               <div className="h-[7px] w-[7px] rounded-sm bg-[#222]" />
