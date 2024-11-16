@@ -71,25 +71,25 @@ export default function Landing() {
           <div className="relative w-full h-[100%] opacity-[50%] transition-ease-out hover-opacity">
             <IsometricGrid />
           </div>
-          <div className="transition-ease-out delay-[140ms] battery absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+          <div className="transition-ease-out delay-[140ms] battery absolute top-[50%] left-[50%] translate-x-[-20%] translate-y-[-100%]">
             <BatterySVG />
           </div>
-          <div className="transition-ease-out delay-[210ms] heatsink absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
-            <HeatsinkSVG />
-          </div>
-          <div className="transition-ease-out delay-[70ms] ssd absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+          <div className="transition-ease-out delay-[70ms] ssd absolute top-[50%] left-[50%] translate-x-[-250%] translate-y-[-0%]">
             <SSDSVG />
           </div>
-          <div className="transition-ease-out delay-[280ms] ram absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+          <div className="transition-ease-out delay-[210ms] heatsink absolute top-[50%] left-[50%] translate-x-[-15%] translate-y-[-35%]">
+            <HeatsinkSVG />
+          </div>
+          <div className="transition-ease-out delay-[280ms] ram absolute top-[50%] left-[50%] translate-x-[-80%] translate-y-[-30%]">
             <RAMSVG />
           </div>
           <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
             <ThinkpadSVG />
           </div>
-          <div className="transition-ease-out trackpad absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+          <div className="transition-ease-out trackpad absolute top-[50%] left-[50%] translate-x-[-110%] translate-y-[-35%]">
             <TrackPadSVG />
           </div>
-          <div className="transition-ease-out delay-[140ms] keyboard absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
+          <div className="transition-ease-out delay-[140ms] keyboard absolute top-[50%] left-[50%] translate-x-[-45%] translate-y-[-55%]">
             <KeyboardSVG />
           </div>
         </div>

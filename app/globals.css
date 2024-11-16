@@ -41,25 +41,25 @@ html {
 }
 
 .thinkpad-container:hover .trackpad {
-  @apply translate-x-[-110%] translate-y-[-35%]
+  @apply translate-x-[-360%] translate-y-[220%]
 }
 
 .thinkpad-container:hover .keyboard {
-  @apply translate-x-[-125%] translate-y-[-110%]
+  @apply translate-x-[-175%] translate-y-[-175%]
 }
 
 .thinkpad-container:hover .ram {
-  @apply translate-y-[-20%]
+  @apply translate-y-[400%]
 }
 
 .thinkpad-container:hover .battery {
-  @apply translate-x-[5%] translate-y-[-100%]
+  @apply translate-x-[125%] translate-y-[-240%]
 }
 
 .thinkpad-container:hover .ssd {
-  @apply translate-x-[-120%] translate-y-[-105%]
+  @apply translate-x-[-650%] translate-y-[-400%]
 }
 
 .thinkpad-container:hover .heatsink {
-  @apply translate-x-[10%] translate-y-[-40%]
+  @apply translate-x-[175%] translate-y-[130%]
 }
