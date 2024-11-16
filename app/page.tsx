@@ -53,16 +53,22 @@ export default function Landing() {
     <div className={clsx("overflow-hidden text-white relative bg-[#111] grid-cols-1 lg:grid-cols-10 grid gap-x-2 w-full h-[100vh] px-0 py-4", grabbing && "cursor-grabbing")}>
       <div className="col-span-3 hidden lg:flex flex-col pl-8 h-[100%]">
         <div className="hover:opacity-[100%] grayscale hover:grayscale-0 flex flex-col gap-y-4 opacity-[20%] transition-all duration-300 ease-out rounded-md w-full">
-          <span className="font-bold text-sm -mb-2 leading-none">ME</span>
+          <span className="font-bold text-sm -mb-2 leading-none">INFO</span>
           <div className="flex flex-row gap-x-2 w-full h-[10rem]">
             <div className="relative w-[40%] h-[100%] rounded-md overflow-hidden">
               <Image alt="sleeping2" src={sleeping2} objectFit="cover" layout="fill" objectPosition="top" />
             </div>
-            <span className={clsx(mono.className, "w-[50%] text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
+            <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
+              <span className={clsx("leading-none font-bold tracking-wide")}>
+                ABOUT ME
+              </span>
+              <hr className="w-full border border-solid border-white border-b-0" />
+              <span className={clsx(mono.className, "text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
+            </div>
           </div>
         </div>
-        <div className="thinkpad-container hover-container relative flex flex-col w-full h-fit thinkpad-container justify-center items-center">
-          <div className="relative w-full h-[100%] opacity-[20%] transition-ease-out hover-opacity">
+        <div className="thinkpad-container hover-container opacity-[50%] hover:opacity-[100%] transition-ease-out relative flex flex-col w-full h-fit thinkpad-container justify-center items-center">
+          <div className="relative w-full h-[100%] opacity-[50%] transition-ease-out hover-opacity">
             <IsometricGrid />
           </div>
           <div className="transition-ease-out delay-[140ms] battery absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-70%]">
@@ -106,7 +112,7 @@ export default function Landing() {
                 contributions?.weeks.map(({ contributionDays }) => {
                   return (contributionDays.map(({ contributionCount, date }) => {
                     return (
-                      <div key={date} className={clsx("h-[0.47vw] w-[0.47vw] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-transparent" : contributionCount > 0 && contributionCount < 6 ? "opacity-[30%] bg-[#6895D2]" : contributionCount > 6 && contributionCount < 12 ? "opacity-[60%] bg-[#6895D2]" : contributionCount > 12 && contributionCount < 24 ? "opacity-[80%] bg-[#6895D2]" : "opacity-[100%] brightness-[150%] bg-[#6895D2]")} />
+                      <div key={date} className={clsx("h-[0.47vw] w-[0.47vw] col-span-1 row-span-1 rounded-sm", contributionCount == 0 ? "bg-transparent" : contributionCount > 0 && contributionCount < 6 ? "opacity-[30%] bg-blu" : contributionCount > 6 && contributionCount < 12 ? "opacity-[60%] bg-blu" : contributionCount > 12 && contributionCount < 24 ? "opacity-[80%] bg-blu" : "opacity-[100%] brightness-[150%] bg-blu")} />
                     )
                   }))
                 })}
@@ -115,10 +121,10 @@ export default function Landing() {
             <div className="flex flex-row items-center justify-center w-full gap-x-1">
               <span className="text-xs w-fit">less</span>
               <div className="h-[7px] w-[7px] rounded-sm bg-[#222]" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[30%] bg-[#6895D2]" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[60%] bg-[#6895D2]" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[80%] bg-[#6895D2]" />
-              <div className="h-[7px] w-[7px] rounded-sm opacity-[100%] brightness-[150%] bg-[#6895D2]" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[30%] bg-blu" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[60%] bg-blu" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[80%] bg-blu" />
+              <div className="h-[7px] w-[7px] rounded-sm opacity-[100%] brightness-[150%] bg-blu" />
               <span className="text-xs w-fit">more</span>
             </div>
           </div>
@@ -126,8 +132,8 @@ export default function Landing() {
 
         <div className="flex flex-col items-center justify-center">
           <span className="pointer-events-none select-none mb-1 font-bold text-[1.2rem] md:text-[1.5rem] tracking-[0.2rem] leading-none">Jeremiah Ryan Buizon</span>
-          <span className="pointer-events-none select-none relative justify-center text-nowrap uppercase font-bold flex bg-gradient-to-r items-center from-10% to-90% from-[#6895D2] via-[#FDE767] to-[#D04848] bg-clip-text text-[1.5rem] md:text-[2rem] text-transparent text-center select-auto">
-            <span className="pointer-events-none select-none font-bold absolute text-nowrap uppercase top-0 flex bg-gradient-to-r blur-md tracking-[0.15rem] from-10% to-90% from-[#6895D2] via-[#FDE767] to-[#D04848] bg-clip-text text-[1.6rem] md:text-[2.1rem] box-content text-transparent text-center select-none">Front-end Developer</span>
+          <span className="pointer-events-none select-none relative justify-center text-nowrap uppercase font-bold flex bg-gradient-to-r items-center from-10% to-90% from-blu via-[#FF69B4] to-rd bg-clip-text text-[1.5rem] md:text-[2rem] text-transparent text-center select-auto">
+            <span className="pointer-events-none select-none font-bold absolute text-nowrap uppercase top-0 flex bg-gradient-to-r blur-md tracking-[0.15rem] from-10% to-90% from-blu via-[#FF69B4] to-rd bg-clip-text text-[1.6rem] md:text-[2.1rem] box-content text-transparent text-center select-none">Front-end Developer</span>
             Front-end Developer
           </span>
           <div className="pointer-events-none select-none flex flex-row items-center gap-x-1">
@@ -151,19 +157,19 @@ export default function Landing() {
             <div className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
               <div className="flex flex-row gap-x-3 items-center">
                 <Link target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jeremiah-ryan-buizon-8ba4342b2/" className={socButtonClasses}>
-                  <div className="text-white hover:text-[#6895D2] transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[0%] hover:translate-x-[-50%]">
+                  <div className="text-white hover:text-blu transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[0%] hover:translate-x-[-50%]">
                     <LinkedInIcon />
                     <LinkedInIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://github.com/JRBuizon" className={socButtonClasses}>
-                  <div className="fill-white hover:fill-[#FDE767] transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
+                  <div className="fill-white hover:fill-[#FF69B4] transition-all duration-500 ease-out flex flex-col gap-y-[8px] h-[64px] translate-y-[-50%] hover:translate-y-[0%]">
                     <GithubIcon />
                     <GithubIcon />
                   </div>
                 </Link>
                 <Link target="_blank" rel="noreferrer" href="https://www.instagram.com/jeremiahbuizon/" className={socButtonClasses}>
-                  <div className="text-white hover:text-[#D04848] transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[-50%] hover:translate-x-[0%]">
+                  <div className="text-white hover:text-rd transition-all duration-500 ease-out flex flex-row gap-x-[8px] w-[64px] translate-x-[-50%] hover:translate-x-[0%]">
                     <InstagramIcon />
                     <InstagramIcon />
                   </div>

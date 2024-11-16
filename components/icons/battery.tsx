@@ -1,4 +1,6 @@
-export default function BatterySVG() {
+import clsx from "clsx";
+
+export default function BatterySVG({ className }: { className?: string }) {
   return (
     <svg
       width="25.398134mm"
@@ -6,11 +8,12 @@ export default function BatterySVG() {
       viewBox="0 0 25.398134 28.161556"
       version="1.1"
       id="svg1"
+      className={clsx(className, "fill-white")}
     >
       <defs
         id="defs1" />
       <path
-        fill="#fff" stroke="#000" strokeWidth={0.264583}
+        fill="inherit" stroke="#000" strokeWidth={0.264583}
         d="m 13.717916,14.350092 8.35128,4.90407 -1.60059,0.84981 -8.30391,-4.9078 z"
         id="path851-2-8-1" />
       <path

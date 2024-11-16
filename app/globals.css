@@ -45,7 +45,7 @@ html {
 }
 
 .thinkpad-container:hover .keyboard {
-  @apply translate-x-[-110%] translate-y-[-100%]
+  @apply translate-x-[-125%] translate-y-[-110%]
 }
 
 .thinkpad-container:hover .ram {
@@ -57,7 +57,7 @@ html {
 }
 
 .thinkpad-container:hover .ssd {
-  @apply translate-x-[-100%] translate-y-[-95%]
+  @apply translate-x-[-120%] translate-y-[-105%]
 }
 
 .thinkpad-container:hover .heatsink {
