@@ -69,9 +69,12 @@ export default function Landing() {
               <Image alt="sleeping2" src={sleeping2} objectFit="cover" layout="fill" objectPosition="top" />
             </div>
             <div className="flex flex-col gap-y-1 w-[50%] h-[100%]">
-              <span className={clsx("leading-none font-bold tracking-wide", fun && "text-blu")}>
-                ABOUT ME
-              </span>
+              <div className="justify-between flex flex-row items-center">
+                <span className={clsx("leading-none font-bold tracking-wide ", fun && "text-blu")}>
+                  ABOUT ME
+                </span>
+                <Link href="./CV.pdf" target="_blank" rel="noopener noreferrer" className="transition-ease-out">Download CV</Link>
+              </div>
               <hr className="w-full border border-solid border-white border-b-0" />
               <span className={clsx(mono.className, "text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
             </div>
@@ -267,7 +270,6 @@ export default function Landing() {
             </div>
           </div>
         </div>
-
         <div className="hidden lg:flex h-[100%] w-full flex-row justify-center gap-2 items-center">
           <span>the fun button -&gt;</span>
           <button onClick={() => setFun(!fun)} type="button" className={clsx("transition-ease-out rounded-full h-[24px] w-[40px] px-[4px] py-[3px] bg-[#111] border border-solid border-white", fun && "bg-pnk ")}><div className={clsx("rounded-full h-[16px] w-[16px] bg-[#fff] transition-ease-out", fun && "ml-[16px]")} /></button>
