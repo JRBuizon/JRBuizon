@@ -73,7 +73,6 @@ export default function Landing() {
                 <span className={clsx("leading-none font-bold tracking-wide ", fun && "text-blu")}>
                   ABOUT ME
                 </span>
-                <Link href="./CV.pdf" target="_blank" rel="noopener noreferrer" className="transition-ease-out">Download CV</Link>
               </div>
               <hr className="w-full border border-solid border-white border-b-0" />
               <span className={clsx(mono.className, "text-xs tracking-wider text-balance")}>Hi. I&apos;m Ryan, a (mostly) Front-End Developer and struggling BS Computer Science student at the University of the Philippines Diliman.</span>
